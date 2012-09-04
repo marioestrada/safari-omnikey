@@ -17,7 +17,7 @@ if(window.top === window)
 
     matches = /q=([^&]+)/i.exec(url)
 
-    if(/client=safari/i.test(url) && matches && matches[1])
+    if(/client=safari/i.test(url) && matches && matches[1] && matches[1].charAt(1) !== '!')
     {
         var full_query = decodeURIComponent(matches[1]).replace(/\+/g, ' ')
         var parts = full_query.split(' ')

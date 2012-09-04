@@ -18,3 +18,8 @@ This extension provides implements a keyword search from Safari's url bar.
 - Wolfram Alpha: `wa`
 - Zappos: `za`
 - Twitter: `tw`
+
+# To-do
+
+- Site manager (Settings)
+- Bang search forcing regular search

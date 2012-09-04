@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Mario Estrada</string>
+	<key>Builder Version</key>
+	<string>8536.25</string>
+	<key>CFBundleDisplayName</key>
+	<string>OmniKey</string>
+	<key>CFBundleIdentifier</key>
+	<string>ec.mario.omnikey</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Database Quota</key>
+		<real>1048576</real>
+		<key>Popovers</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>settings.html</string>
+				<key>Height</key>
+				<real>300</real>
+				<key>Identifier</key>
+				<string>Sites</string>
+				<key>Width</key>
+				<real>300</real>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>Toolbar</string>
+				<key>Image</key>
+				<string>img/icon.png</string>
+				<key>Label</key>
+				<string>OmniKey</string>
+				<key>Popover</key>
+				<string>Sites</string>
+				<key>Tool Tip</key>
+				<string>OmniKey Settings</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>Start</key>
+			<array>
+				<string>js/start.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Keyword searches for Safari's Omnibar-like search</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.google.com</string>
+				<string>*.yahoo.com</string>
+				<string>*.bing.com</string>
+			</array>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+	<key>Website</key>
+	<string>http://mario.ec/</string>
+</dict>
+</plist>

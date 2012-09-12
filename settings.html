@@ -2,8 +2,38 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/settings.css">
+
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/vendor/underscore.js"></script>
+        <script src="js/vendor/backbone.js"></script>
+        <script src="js/vendor/backbone.localstorage.js"></script>
+
+        <script src="js/defaults.js"></script>
+        <script src="js/popup.js"></script>
     </head>
     <body>
-        Settings
+        <h1>Sites:</h1>
+        <table id="sites">
+            <thead>
+                <tr>
+                    <th class="key">Key</th>
+                    <th class="url">Url</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>amazon</td>
+                    <td>Amazon.com</td>
+                </tr>
+                <tr>
+                    <td>wiki</td>
+                    <td>Wikipedia.org</td>
+                </tr>
+                <tr>
+                    <td>yt</td>
+                    <td>Youtube.com</td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>

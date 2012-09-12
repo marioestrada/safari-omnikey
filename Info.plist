@@ -20,6 +20,8 @@
 	<dict>
 		<key>Database Quota</key>
 		<real>1048576</real>
+		<key>Global Page</key>
+		<string>global.html</string>
 		<key>Popovers</key>
 		<array>
 			<dict>
@@ -55,6 +57,7 @@
 		<dict>
 			<key>Start</key>
 			<array>
+				<string>js/defaults.js</string>
 				<string>js/start.js</string>
 			</array>
 		</dict>

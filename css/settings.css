@@ -1,3 +1,65 @@
 html{
     font-family: Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+*{
+    -webkit-box-sizing: box-sizing;
+    box-sizing: box-sizing;
+}
+
+h1{
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0 0 5px;
+}
+
+table{
+    width: 100%;
+    background: #fff;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    max-height: 464px;
+    overflow: auto;
+}
+
+thead th{
+    font-weight: normal;
+    text-align: left;
+}
+
+thead tr{
+    background: #ccc -webkit-linear-gradient(top, rgba(255,255,255,0.3), rgba(255,255,255,0));
+}
+
+table td,
+table th{
+    padding: 2px 5px;
+}
+
+td input{
+    display: none;
+}
+td.editing input{
+    display: inline;
+}
+td.editing .label{
+    display: none;
+}
+
+tbody tr:nth-child(even){
+    background-color: #F3F6FA;
+}
+
+table .key{
+    width: 30%;
+}
+
+table .url{
+    width: 70%;
+}
+
+tbody{
+    height: 180px;
+    overflow: auto;
 }

@@ -2,12 +2,24 @@
 {
 
     var AppView = Backbone.View.extend({
+
         initialize: function()
         {
             this.$sites = this.$('tbody').html('')
 
             this.initViews()
             this.initCollections()
+
+            $(document).on('click', '.add-site', _.bind(this.addSite, this))
+        },
+
+        addSite: function(e)
+        {
+            e.preventDefault()
+            console.log('creating new site')
+            var model = this.Collections.Sites.create()
+            model.trigger('justAdded')
+            _.defer(function(){ model.save() })
         },
 
         initViews: function()
@@ -131,13 +143,20 @@
             'click td': 'edit',
             'blur td input': 'done',
             'keypress td input': 'keypress',
-            'click .remove': 'removeSite'
+            'click .remove': 'removeSite',
+            'keydown td input': 'keydown'
         },
 
         initialize: function()
         {
             this.model.on('change', this.render, this)
             this.model.on('destroy', this.remove, this)
+            this.model.on('justAdded', this.justAdded, this)
+        },
+
+        justAdded: function()
+        {
+            this.$('td:first').trigger('click')
         },
 
         removeSite: function(e)
@@ -158,8 +177,22 @@
 
         keypress: function(e)
         {
-            if(e.keyCode == 13)
+            if(e.keyCode === 13)
                 this.done(e)
+        },
+
+        keydown: function(e)
+        {
+            var me = $(e.currentTarget)
+
+            if(e.keyCode === 9)
+            {
+                _.defer(function()
+                {
+                    console.log('trigger', me.closest('td'), me.closest('td').next('td'))
+                    me.closest('td').next('td').trigger('click')
+                })
+            }
         },
 
         edit: function(e)

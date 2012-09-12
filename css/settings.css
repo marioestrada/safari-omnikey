@@ -35,10 +35,12 @@ thead tr{
 table td,
 table th{
     padding: 2px 5px;
+    position: relative;
 }
 
 td input{
     display: none;
+    width: 80%;
 }
 td.editing input{
     display: inline;
@@ -47,15 +49,21 @@ td.editing .label{
     display: none;
 }
 
+td .remove{
+    position: absolute;
+    right: 3px;
+    top: 1px;
+}
+
 tbody tr:nth-child(even){
     background-color: #F3F6FA;
 }
 
-table .key{
+table th.key{
     width: 30%;
 }
 
-table .url{
+table th.url{
     width: 70%;
 }
 

@@ -10,7 +10,7 @@ Omnikey.default_sites = [
         url: 'http://www.newegg.com/Product/ProductList.aspx?Submit=ENE&DEPA=0&Order=BESTMATCH&N=-1&isNodeId=1&Description={search}&x=0&y=0'
     },
     {
-        key: 'zap',
+        key: 'zappos',
         url: 'http://www.zappos.com/search?term={search}'
     },
     {
@@ -30,7 +30,7 @@ Omnikey.default_sites = [
         url: 'http://www.rottentomatoes.com/search/search.php?search={search}&sitesearch=rt'
     },
     {
-        key: 'tw',
+        key: 'twitter',
         url: 'http://search.twitter.com/search?q={search}'
     },
     {

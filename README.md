@@ -21,5 +21,5 @@ This extension provides implements a keyword search from Safari's url bar.
 
 # To-do
 
-- __(done)__ Site manager (Settings)
-- __(done)__ Bang search forcing regular search
+- __(done)__ <strike>Site manager (Settings)</strike>
+- __(done)__ <strike>Bang search forcing regular search</strike>

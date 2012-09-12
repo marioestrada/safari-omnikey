@@ -16,9 +16,12 @@
         addSite: function(e)
         {
             e.preventDefault()
-            console.log('creating new site')
-            var model = this.Collections.Sites.create()
+
+            // console.log(safari.application.activeBrowserWindow.activeTab.url)
+            var model = this.Collections.Sites.create({ url: safari.application.activeBrowserWindow.activeTab.url })
+            // var model = this.Collections.Sites.create()
             model.trigger('justAdded')
+
             _.defer(function(){ model.save() })
         },
 

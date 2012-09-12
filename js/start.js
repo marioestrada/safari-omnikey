@@ -2,35 +2,40 @@
 {
     if(window.top === window)
     {
-        var url = window.location.href
-
         // http-//search.yahoo.com/search?ei=utf-8&fr=aaplw&p=hola+yahoo
         // http-//www.bing.com/search?q=hola+bing&form=APMCS1
         var safari_search_engines = {
             google: {
+                url: /\/(www.)?google.com\//i,
                 referral: /client=safari/i, //.test(url)
                 query: /\bq=([^&]+)/i //.exec(url)
             },
             bing: {
+                url: /\/(www.)?bing.com\//i,
                 referral: /form=APMCS1/i,
                 query: /\bq=([^&]+)/i
             },
             yahoo: {
+                url: /\/(www.)?yahoo.com\//i,
                 referral: /fr=aaplw/i,
                 query: /\bp=([^&]+)/i
             }
         }
 
+        var url = window.location.href
         var is_safari_search = false
         var matches = false
+        var is_search_site = false
 
         for(var engine in safari_search_engines)
         {
-            matches = safari_search_engines[engine].query.exec(url)
-            is_safari_search = safari_search_engines[engine].referral.test(url)
+            var site = safari_search_engines[engine]
+            is_search_site = site.url.test(url)
+            is_safari_search = site.referral.test(url)
 
-            if(is_safari_search)
+            if(is_safari_search && is_search_site)
             {
+                matches = site.query.exec(url)
                 break
             }
         }

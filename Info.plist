@@ -70,14 +70,8 @@
 	<dict>
 		<key>Website Access</key>
 		<dict>
-			<key>Allowed Domains</key>
-			<array>
-				<string>*.google.com</string>
-				<string>*.yahoo.com</string>
-				<string>*.bing.com</string>
-			</array>
 			<key>Level</key>
-			<string>Some</string>
+			<string>All</string>
 		</dict>
 	</dict>
 	<key>Website</key>

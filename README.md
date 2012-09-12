@@ -4,7 +4,7 @@ This extension provides implements a keyword search from Safari's url bar.
 
 ## Example
 
-`amazon ipod touch` will search for `ipod touch` directly in Amazon's website.
+Searching for `amazon ipod touch` from the url bar will search for `ipod touch` directly in Amazon's website.
 
 ## Bundled Site Keywords
 

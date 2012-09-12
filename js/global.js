@@ -5,11 +5,14 @@ var getMessage = function(msg)
     var name = msg.name
     var data = msg.message
 
+    console.log(msg)
+
     switch(name)
     {
         case 'getSites':
             var SavedSites = new Backbone.LocalStorage('omnikey-sites')
-            safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("setSites", SavedSites.findAll());
+            // safari.self.tabs[0].page.dispatchMessage("setSites", SavedSites.findAll())
+            msg.target.page.dispatchMessage("setSites", SavedSites.findAll())
             break
     }
 }

@@ -122,6 +122,7 @@
                 <span class="label"><%= key %></span>\
             </td>\
             <td data-url="<%= url %>">\
+                <a href="#delete" class="remove">Remove</a>\
                 <input class="url" data-key="url" value="<%= url %>" />\
                 <span class="label"><%= name %></span>\
             </td>'),
@@ -129,13 +130,20 @@
         events: {
             'click td': 'edit',
             'blur td input': 'done',
-            'keypress td input': 'keypress'
+            'keypress td input': 'keypress',
+            'click .remove': 'removeSite'
         },
 
         initialize: function()
         {
             this.model.on('change', this.render, this)
-            this.model.on('destroy', this.render, this)
+            this.model.on('destroy', this.remove, this)
+        },
+
+        removeSite: function(e)
+        {
+            e.preventDefault()
+            this.clear()
         },
 
         done: function(e)
@@ -150,7 +158,6 @@
 
         keypress: function(e)
         {
-            console.log('pressed', e.keyCode)
             if(e.keyCode == 13)
                 this.done(e)
         },
@@ -159,7 +166,6 @@
         {
             var me = $(e.currentTarget)
             me.addClass('editing')
-            console.warn(me.find('input')[0])
             me.find('input')[0].focus()
         },
 
@@ -178,7 +184,6 @@
 
     $(function()
     {
-        console.log('starting')
         window.App = new AppView({
             el: $('#sites')
         })

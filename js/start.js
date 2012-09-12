@@ -2,7 +2,6 @@ if(window.top === window)
 {
     var handleMessage = function(msg)
     {
-        console.log('handling message', msg)
         var name = msg.name
         var data = msg.message
 

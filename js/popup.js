@@ -18,7 +18,7 @@
             e.preventDefault()
 
             // console.log(safari.application.activeBrowserWindow.activeTab.url)
-            var model = this.Collections.Sites.create({ url: safari.application.activeBrowserWindow.activeTab.url })
+            var model = this.Collections.Sites.create({ key: 'key', url: safari.application.activeBrowserWindow.activeTab.url })
             // var model = this.Collections.Sites.create()
             model.trigger('justAdded')
 

@@ -1,29 +1,29 @@
-if(window.top === window)
+(function()
 {
-    var handleMessage = function(msg)
+    if(window.top === window)
     {
-        var name = msg.name
-        var data = msg.message
+        var url = window.location.href
+        var matches = /q=([^&]+)/i.exec(url)
 
-        switch(name)
+        var handleMessage = function(msg)
         {
-            case 'setSites':
-                var sites = Omnikey.default_sites
+            var name = msg.name
+            var data = msg.message
 
-                if(data.length > 0)
-                {
-                    sites = {}
-                    for(var i = 0; i < data.length; i++)
+            switch(name)
+            {
+                case 'setSites':
+                    var sites = Omnikey.default_sites
+
+                    if(data.length > 0)
                     {
-                        sites[data[i].key] = data[i].url
+                        sites = {}
+                        for(var i = 0; i < data.length; i++)
+                        {
+                            sites[data[i].key] = data[i].url
+                        }
                     }
-                }
 
-                var url = window.location.href
-                var matches = /q=([^&]+)/i.exec(url)
-
-                if(/client=safari/i.test(url) && matches && matches[1] && matches[1].charAt(1) !== '!')
-                {
                     var full_query = decodeURIComponent(matches[1]).replace(/\+/g, ' ')
                     var parts = full_query.split(' ')
                     var key = parts[0]
@@ -35,13 +35,21 @@ if(window.top === window)
                         window.stop()
                         window.location = sites[key].replace(/\{search\}/g, query)
                     }
-                }
 
-                break
+                    if(parts[0][0] === '!')
+                    {
+                        window.location = url.replace(parts[0], parts[0].slice(1)) + '&_ok_=1'
+                    }
+
+                    break
+            }
         }
+
+        if(/client=safari/i.test(url) && !/_ok_=1/i.test(url) && matches && matches[1] && matches[1].charAt(1) !== '!')
+        {
+            safari.self.tab.dispatchMessage("getSites")
+        }
+
+        safari.self.addEventListener("message", handleMessage, false)
     }
-
-    safari.self.addEventListener("message", handleMessage, false)
-
-    safari.self.tab.dispatchMessage("getSites")
-}
+})()

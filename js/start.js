@@ -43,6 +43,5 @@ if(window.top === window)
 
     safari.self.addEventListener("message", handleMessage, false)
 
-    safari.self.tab.dispatchMessage("getSites", safari.self.tab)
-    console.log(safari.self)
+    safari.self.tab.dispatchMessage("getSites")
 }

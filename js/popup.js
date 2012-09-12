@@ -189,7 +189,6 @@
             {
                 _.defer(function()
                 {
-                    console.log('trigger', me.closest('td'), me.closest('td').next('td'))
                     me.closest('td').next('td').trigger('click')
                 })
             }

@@ -5,8 +5,6 @@ var getMessage = function(msg)
     var name = msg.name
     var data = msg.message
 
-    console.log(msg)
-
     switch(name)
     {
         case 'getSites':

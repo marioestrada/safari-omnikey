@@ -22,7 +22,7 @@
             // var model = this.Collections.Sites.create()
             model.trigger('justAdded')
 
-            _.defer(function(){ model.save() })
+            model.save()
         },
 
         initViews: function()

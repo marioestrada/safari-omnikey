@@ -16,7 +16,7 @@
                 query: /\bq=([^&]+)/i
             },
             yahoo: {
-                url: /\/(www.)?yahoo.com\//i,
+                url: /\/search.yahoo.com\//i,
                 referral: /fr=aaplw/i,
                 query: /\bp=([^&]+)/i
             }

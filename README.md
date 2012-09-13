@@ -19,7 +19,12 @@ Searching for `amazon ipod touch` from the url bar will search for `ipod touch` 
 - Zappos: `zappos`
 - Twitter: `twitter`
 
+# Force Regular Search
+
+You can force a regular search without keyword matching by prepending the query with a `!`, eg: `!amazon headquarters`.
+
 # To-do
 
 - __(done)__ <strike>Site manager (Settings)</strike>
 - __(done)__ <strike>Bang search forcing regular search</strike>
+- Being able to set a default search site for all searches.

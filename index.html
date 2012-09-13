@@ -10,9 +10,9 @@
         <link rel="stylesheet" href="site/bootstrap/css/bootstrap-responsive.css" />
         <link rel="stylesheet" href="site/css/site.css" />
     </head>
-    <body>
+    <body data-spy="scroll" data-target=".navbar" data-offset="100">
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -23,10 +23,10 @@
                     <a class="brand" href="#">Safari Omnikey</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
+                            <!-- <li class="active"><a href="#">Home</a></li> -->
+                            <li><a href="#download">Download</a></li>
                             <li><a href="#features">Features</a></li>
                             <li><a href="#instructions">Instructions</a></li>
-                            <li><a href="#download">Download</a></li>
                         </ul>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
             <div class="hero-unit">
                 <h1>Safari Omnikey</h1>
                 <p>Chrome-like keyword search for Safari browser. Search Amazon, Wikipedia or any other site directly from your URL bar.</p>
-                <p><a href="#features" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+                <p><a href="#features" class="btn btn-primary">Learn more &raquo;</a></p>
             </div>
 
             <div class="row" id="download">
@@ -49,6 +49,7 @@
                         <a class="btn btn-primary btn-large" href="download/omnikey.safariextz">Download Omnikey</a>
                         <a class="btn btn-large" href="http://github.com/marioestrada/safari-omnikey">Source Code</a>
                     </p>
+                    <p>Know how to make Omnikey better? Report issues or send pull requests on <a href="http://github.com/marioestrada/safari-omnikey">Github</a>.</p>
                     <p><small>* Some of the bundled sites will come with referral attributes in the URL to support further development.</small></p>
                     <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
                 </div>
@@ -81,12 +82,13 @@
             <hr>
 
             <footer>
-                <p>MIT Licensed, <a href="http://github.com/marioestrada/safari-omnikey">Fork it on Github</a></p>
+                <p>MIT Licensed, <a href="http://github.com/marioestrada/safari-omnikey">Fork it on Github</a> - Created by <a href="http://mario.ec">Mario Estrada</a></p>
             </footer>
 
         </div>
 
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="site/bootstrap/js/bootstrap.min.js"></script>
+        <script src="site/js/site.js"></script>
     </body>
 </html>

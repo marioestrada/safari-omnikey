@@ -59,8 +59,9 @@
                 {
                     Site.save()
                 })
+            }else{
+                this.Collections.Sites.each(_.bind(this.addOne, this))
             }
-            this.Collections.Sites.each(_.bind(this.addOne, this))
         },
 
         render: function()
@@ -137,7 +138,7 @@
                 <span class="label"><%= key %></span>\
             </td>\
             <td data-url="<%= url %>">\
-                <a href="#delete" class="remove">Remove</a>\
+                <a href="#delete" class="remove">+</a>\
                 <input class="url" data-key="url" value="<%= url %>" />\
                 <span class="label"><%= name %></span>\
             </td>'),

@@ -28,3 +28,14 @@ You can force a regular search without keyword matching by prepending the query 
 - __(done)__ <strike>Site manager (Settings)</strike>
 - __(done)__ <strike>Bang search forcing regular search</strike>
 - Being able to set a default search site for all searches.
+- Look for a faster way to detect searches and prevent Google flashing before some searches.
+
+# Version History
+
+### 0.9.1
+
+- [Bugfix] Taking into account localized versions of Safari that perform searches on different domains, this fixes issues that prevented Omnikey from doing it's magic when running in other languages (thanks to Lukas Herman for reporting).
+
+### 0.9
+
+- First release

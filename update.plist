@@ -10,9 +10,9 @@
        <key>Developer Identifier</key>
        <string>4N275ZF365</string>
        <key>CFBundleVersion</key>
-       <string>0.9</string>
+       <string>0.9.1</string>
        <key>CFBundleShortVersionString</key>
-       <string>0.9</string>
+       <string>0.9.1</string>
        <key>URL</key>
        <string>http://marioestrada.github.com/safari-omnikey/download/omnikey.safariextz</string>
      </dict>

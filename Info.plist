@@ -7,15 +7,15 @@
 	<key>Builder Version</key>
 	<string>8536.25</string>
 	<key>CFBundleDisplayName</key>
-	<string>OmniKey</string>
+	<string>Omnikey</string>
 	<key>CFBundleIdentifier</key>
 	<string>ec.mario.omnikey</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.9</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>0.9</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -63,7 +63,7 @@
 		</dict>
 	</dict>
 	<key>Description</key>
-	<string>Keyword searches for Safari's Omnibar-like search</string>
+	<string>Keyword searches for Safari's Omnibar-like search.</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -76,7 +76,9 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://marioestrada.github.com/safari-omnikey/update.plist</string>
 	<key>Website</key>
-	<string>http://mario.ec/</string>
+	<string>http://marioestrada.github.com/safari-omnikey/</string>
 </dict>
 </plist>

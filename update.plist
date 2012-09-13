@@ -6,7 +6,7 @@
    <array>
      <dict>
        <key>CFBundleIdentifier</key>
-       <string>ec.mario.safari.OmniKey</string>
+       <string>ec.mario.omnikey</string>
        <key>Developer Identifier</key>
        <string>4N275ZF365</string>
        <key>CFBundleVersion</key>

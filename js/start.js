@@ -6,7 +6,7 @@
         // http-//www.bing.com/search?q=hola+bing&form=APMCS1
         var safari_search_engines = {
             google: {
-                url: /\/(www.)?google.com\//i,
+                url: /\/(www.)?google.([a-z\.]+)\//i,
                 referral: /client=safari/i, //.test(url)
                 query: /\bq=([^&]+)/i //.exec(url)
             },
@@ -16,7 +16,7 @@
                 query: /\bq=([^&]+)/i
             },
             yahoo: {
-                url: /\/search.yahoo.com\//i,
+                url: /\/([a-z]+.)?search.yahoo.com\//i,
                 referral: /fr=aaplw/i,
                 query: /\bp=([^&]+)/i
             }

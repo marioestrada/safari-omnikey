@@ -49,16 +49,20 @@
                         <a class="btn btn-primary btn-large" href="download/omnikey.safariextz">Download Omnikey</a>
                         <a class="btn btn-large" href="http://github.com/marioestrada/safari-omnikey">Source Code</a>
                     </p>
+
+                    <p><a href="https://github.com/marioestrada/safari-omnikey#version-history">Version History</a></p>
                     
-                    <!-- AddThis Button BEGIN -->
-                    <div class="addthis_toolbox addthis_default_style" style="margin-bottom: 5px">
-                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                        <a class="addthis_button_tweet" tw:via="marioeg"></a>
-                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                    <div id="social" style="margin-bottom: 5px">
+                        <div class="button">
+                            <div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="arial"></div>
+                        </div>
+                        <div class="button">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-via="marioeg" data-related="marioeg">Tweet</a>
+                        </div>
+                        <div class="button">
+                            <div class="g-plusone" data-size="medium"></div>
+                        </div>
                     </div>
-                    <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
-                    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=marioestrada"></script>
-                    <!-- AddThis Button END -->
 
                     <p>Know how to make Omnikey better? Report issues or send pull requests on <a href="http://github.com/marioestrada/safari-omnikey">Github</a>.</p>
                     <p><small>* Some of the bundled sites will come with referral attributes in the URL to support further development.</small></p>
@@ -128,6 +132,25 @@
             t.src = '//secure.gaug.es/track.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(t, s);
+          })();
+        </script>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=216891305041073";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+        <script type="text/javascript">
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
           })();
         </script>
     </body>

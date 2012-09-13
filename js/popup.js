@@ -59,8 +59,9 @@
                 {
                     Site.save()
                 })
+            }else{
+                this.Collections.Sites.each(_.bind(this.addOne, this))
             }
-            this.Collections.Sites.each(_.bind(this.addOne, this))
         },
 
         render: function()

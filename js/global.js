@@ -1,5 +1,17 @@
 // global.js
 
+var createUrl = function(url, query)
+{
+    var new_url
+
+    query = query.replace(/\s+/g, '+')
+
+    new_url = url.replace(/\{search\}/g, query)
+    new_url = new_url.replace(/\{%search\}/g, query.replace('+', '%20'))
+
+    return new_url
+}
+
 var handleQuery = function(e)
 {
     var SavedSites = new Backbone.LocalStorage('omnikey-sites')
@@ -7,12 +19,19 @@ var handleQuery = function(e)
 
     var sites = Omnikey.default_sites
 
+    var search_site = false
+
     if(SitesList.length > 0)
     {
         sites = {}
         for(var i = 0; i < SitesList.length; i++)
         {
             sites[SitesList[i].key] = SitesList[i].url
+
+            if(SitesList[i].default)
+            {
+                search_site = SitesList[i].url
+            }
         }
     }
 
@@ -25,18 +44,18 @@ var handleQuery = function(e)
     if(sites[key])
     {
         e.preventDefault()
-        query = query.replace(/\s+/g, '+')
         
-        search_url = sites[key].replace(/\{search\}/g, query)
-        search_url = search_url.replace(/\{%search\}/g, query.replace('+', '%20'))
+        search_url = createUrl(sites[key], query)
 
         e.target.url = search_url
-    }
-
-    if(key[0] === '!')
-    {
+    }else if(key[0] === '!'){
         e.preventDefault()
+
         e.target.url = 'https://www.google.com/search?q=' + full_query.slice(1)
+    }else if(search_site){
+        e.preventDefault()
+
+        e.target.url = createUrl(search_site, full_query)
     }
 }
 

@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.9.1</string>
+	<string>0.10</string>
 	<key>CFBundleVersion</key>
-	<string>0.9.1</string>
+	<string>0.10</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -28,7 +28,7 @@
 				<key>Filename</key>
 				<string>settings.html</string>
 				<key>Height</key>
-				<real>300</real>
+				<real>340</real>
 				<key>Identifier</key>
 				<string>Sites</string>
 				<key>Width</key>
@@ -54,13 +54,7 @@
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
-		<dict>
-			<key>Start</key>
-			<array>
-				<string>js/defaults.js</string>
-				<string>js/start.js</string>
-			</array>
-		</dict>
+		<dict/>
 	</dict>
 	<key>Description</key>
 	<string>Keyword searches for Safari's Omnibar-like search.</string>

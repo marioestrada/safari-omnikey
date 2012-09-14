@@ -18,6 +18,10 @@ Omnikey.default_sites = [
         url: 'http://www.youtube.com/results?search_query={search}'
     },
     {
+        key: 'maps',
+        url: 'https://maps.google.com/maps?hl=en&authuser=0&q={search}&ie=UTF-8'
+    },
+    {
         key: 'ddg',
         url: 'http://duckduckgo.com/?q={search}'
     },
@@ -28,6 +32,10 @@ Omnikey.default_sites = [
     {
         key: 'rt',
         url: 'http://www.rottentomatoes.com/search/search.php?search={search}&sitesearch=rt'
+    },
+    {
+        key: 'imdb',
+        url: 'http://www.imdb.com/find?q={search}&s=all'
     },
     {
         key: 'twitter',

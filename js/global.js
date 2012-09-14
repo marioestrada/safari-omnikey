@@ -1,18 +1,38 @@
 // global.js
 
-var getMessage = function(msg)
+var handleQuery = function(e)
 {
-    var name = msg.name
-    var data = msg.message
+    var SavedSites = new Backbone.LocalStorage('omnikey-sites')
+    var SitesList = SavedSites.findAll()
 
-    switch(name)
+    var sites = Omnikey.default_sites
+
+    if(SitesList.length > 0)
     {
-        case 'getSites':
-            var SavedSites = new Backbone.LocalStorage('omnikey-sites')
-            // safari.self.tabs[0].page.dispatchMessage("setSites", SavedSites.findAll())
-            msg.target.page.dispatchMessage("setSites", SavedSites.findAll())
-            break
+        sites = {}
+        for(var i = 0; i < SitesList.length; i++)
+        {
+            sites[SitesList[i].key] = SitesList[i].url
+        }
+    }
+
+    var full_query = e.query
+    var parts = full_query.split(' ')
+    var key = parts[0]
+    var query = parts.splice(1).join(' ')
+
+    if(sites[key])
+    {
+        e.preventDefault()
+        query = query.replace(/\s/g, '+')
+        e.target.url = sites[key].replace(/\{search\}/g, query)
+    }
+
+    if(key[0] === '!')
+    {
+        e.preventDefault()
+        e.target.url = 'https://www.google.com/search?q=' + full_query.slice(1)
     }
 }
 
-safari.application.addEventListener("message", getMessage, false)
+safari.application.addEventListener("beforeSearch", handleQuery, false)

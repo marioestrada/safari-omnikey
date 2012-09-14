@@ -11,6 +11,7 @@ Searching for `amazon ipod touch` from the url bar will search for `ipod touch` 
 - Amazon: `amazon`
 - Wikipedia: `wiki`
 - Ebay: `ebay`
+- Google Maps: `maps`
 - Newegg: `newegg`
 - Duckduckgo: `ddg`
 - YouTube: `youtube`
@@ -18,6 +19,7 @@ Searching for `amazon ipod touch` from the url bar will search for `ipod touch` 
 - Wolfram Alpha: `wolfram`
 - Zappos: `zappos`
 - Twitter: `twitter`
+- IMDB: `imdb`
 
 # Force Regular Search
 

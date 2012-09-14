@@ -11,6 +11,7 @@ Searching for `amazon ipod touch` from the url bar will search for `ipod touch` 
 - Amazon: `amazon`
 - Wikipedia: `wiki`
 - Ebay: `ebay`
+- Google Maps: `maps`
 - Newegg: `newegg`
 - Duckduckgo: `ddg`
 - YouTube: `youtube`
@@ -18,6 +19,7 @@ Searching for `amazon ipod touch` from the url bar will search for `ipod touch` 
 - Wolfram Alpha: `wolfram`
 - Zappos: `zappos`
 - Twitter: `twitter`
+- IMDB: `imdb`
 
 # Force Regular Search
 
@@ -25,9 +27,9 @@ You can force a regular search without keyword matching by prepending the query 
 
 # To-do
 
-- __(done)__ <strike>Site manager (Settings)</strike>
-- __(done)__ <strike>Bang search forcing regular search</strike>
-- __(done)__ <strike>Look for a faster way to detect searches and prevent Google flashing before some searches<strike>
+- __done__ ~~Site manager (Settings)~~
+- __done__ ~~Bang search forcing regular search~~
+- __done__ ~~Look for a faster way to detect searches and prevent Google flashing before some searches~~
 - Being able to set a default search site for all searches.
 
 # Version History

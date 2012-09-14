@@ -20,12 +20,17 @@ var handleQuery = function(e)
     var parts = full_query.split(' ')
     var key = parts[0]
     var query = parts.splice(1).join(' ')
+    var search_url
 
     if(sites[key])
     {
         e.preventDefault()
-        query = query.replace(/\s/g, '+')
-        e.target.url = sites[key].replace(/\{search\}/g, query)
+        query = query.replace(/\s+/g, '+')
+        
+        search_url = sites[key].replace(/\{search\}/g, query)
+        search_url = search_url.replace(/\{%search\}/g, query.replace('+', '%20'))
+
+        e.target.url = search_url
     }
 
     if(key[0] === '!')

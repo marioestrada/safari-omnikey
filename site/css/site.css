@@ -31,4 +31,5 @@ body{
 .social .button{
     float: left;
     margin-right: 10px;
+    min-width: 120px;
 }

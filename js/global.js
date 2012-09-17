@@ -5,6 +5,7 @@ var createUrl = function(url, query)
     var new_url
 
     query = query.replace(/\s+/g, '+')
+    query = escape(query)
 
     new_url = url.replace(/\{search\}/g, query)
     new_url = new_url.replace(/\{%search\}/g, query.replace('+', '%20'))
@@ -51,7 +52,7 @@ var handleQuery = function(e)
     }else if(key[0] === '!'){
         e.preventDefault()
 
-        e.target.url = 'https://www.google.com/search?q=' + full_query.slice(1)
+        e.target.url = 'https://www.google.com/search?q=' + escape(full_query.slice(1))
     }else if(search_site){
         e.preventDefault()
 

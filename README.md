@@ -34,6 +34,10 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 0.10.1
+
+- [Bugfix] Fixed URL encoding issues.
+
 ### 0.10
 
 - [Improvement] Omnikey used to work in a hacky kind of way, now it listens for the `beforeSearch` event which makes it way more faster and prevents the rare Google screen flicker.

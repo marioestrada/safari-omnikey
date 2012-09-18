@@ -14,20 +14,24 @@
     <body>
         <a href="#add-site" class="add-site">Add Site</a>
         <h1>Sites</h1>
-        <table id="sites">
+        <table>
             <thead>
                 <tr>
                     <th class="key">Key</th>
                     <th class="url">Url</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>No sites</td>
-                    <td></td>
-                </tr>
-            </tbody>
         </table>
+        <div id="sites-scroller">
+            <table id="sites">
+                <tbody>
+                    <tr>
+                        <td>No sites</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <p class="footer">Use <code>{search}</code> as the wildcard to be replaced in the url.</p>
     </body>
 </html>

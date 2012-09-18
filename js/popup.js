@@ -133,11 +133,11 @@
         tagName: 'tr',
 
         template: _.template('\
-            <td>\
+            <td class="key">\
                 <input class="key" data-key="key" value="<%= key %>" />\
                 <span class="label"><%= key %></span>\
             </td>\
-            <td data-url="<%= url %>">\
+            <td class="url">\
                 <a href="#delete" class="remove">+</a>\
                 <input class="url" data-key="url" value="<%= url %>" />\
                 <span class="label"><%= name %></span>\

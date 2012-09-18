@@ -3,6 +3,10 @@ html{
     font-size: 12px;
 }
 
+body{
+    overflow: hidden;
+}
+
 *{
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -72,7 +76,7 @@ td.editing .label{
 
 td .remove{
     position: absolute;
-    right: 3px;
+    right: 4px;
     top: 2px;
     /*text-indent: -1000px;*/
     overflow: hidden;
@@ -99,17 +103,26 @@ tbody tr:nth-child(even){
     background-color: #F3F6FA;
 }
 
-table th.key{
+#sites{
+    border-top: 0;
+    border-bottom: 0;
+}
+
+#sites-scroller{
+    border-bottom: 1px solid #ccc;
+    max-height: 240px;
+    overflow: auto;
+    display: block;
+}
+
+table th.key,
+table td.key{
     width: 30%;
 }
 
-table th.url{
+table th.url,
+table td.url{
     width: 70%;
-}
-
-tbody{
-    height: 180px;
-    overflow: auto;
 }
 
 p.footer{

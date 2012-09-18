@@ -126,7 +126,12 @@
     var Sites = Backbone.Collection.extend({
         model: Site,
 
-        localStorage: new Backbone.LocalStorage("omnikey-sites")
+        localStorage: new Backbone.LocalStorage("omnikey-sites"),
+
+        comparator: function(site)
+        {
+            return site.get('key').toLowerCase().charCodeAt(0)
+        }
     })
 
     var SiteView = Backbone.View.extend({

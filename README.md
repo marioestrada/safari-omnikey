@@ -34,6 +34,15 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.0.1
+
+- [Bugfix] Using `{%search}` now encodes every space
+- [Feature] Added Amazon mp3 as the default site, key: `mp3`
+
+### 1.0
+
+- [Feature] Added option for setting default search site for all searches.
+
 ### 0.10.1
 
 - [Bugfix] Fixed URL encoding issues.

@@ -110,6 +110,7 @@ tbody tr:nth-child(even){
 
 #sites-scroller{
     border-bottom: 1px solid #ccc;
+    background-color: #fff;
     max-height: 240px;
     overflow: auto;
     display: block;

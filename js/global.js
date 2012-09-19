@@ -8,7 +8,7 @@ var createUrl = function(url, query)
     query = escape(query)
 
     new_url = url.replace(/\{search\}/g, query)
-    new_url = new_url.replace(/\{%search\}/g, query.replace('+', '%20'))
+    new_url = new_url.replace(/\{%search\}/g, query.replace(/\+/g, '%20'))
 
     return new_url
 }

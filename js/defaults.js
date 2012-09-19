@@ -51,6 +51,6 @@ Omnikey.default_sites = [
     },
     {
         key: 'mp3',
-        url: 'http://www.amazon.com/s/?tag=widgetsamazon-20&link_code=wsw&_encoding=UTF-8&search-alias=digital-music&field-keywords={search}&Submit.x=0&Submit.y=0&Submit=Go'
+        url: 'http://www.amazon.com/s/?tag=httpmariec-20&link_code=wsw&_encoding=UTF-8&search-alias=digital-music&field-keywords={search}&Submit.x=0&Submit.y=0&Submit=Go'
     }
 ]

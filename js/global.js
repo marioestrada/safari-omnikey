@@ -20,7 +20,8 @@ var handleQuery = function(e)
 
     var sites = Omnikey.default_sites
 
-    var search_site = false
+    var search_site = localStorage.default_search
+    // search_site = 'http://duckduckgo.com/?q={search}'
 
     if(SitesList.length > 0)
     {

@@ -3,6 +3,10 @@
 
     var AppView = Backbone.View.extend({
 
+        option_template: _.template('\
+                <option value="<%= url %>"><%= name %></option>\
+        '),
+
         initialize: function()
         {
             this.$sites = this.$('tbody').html('')
@@ -10,16 +14,56 @@
             this.initViews()
             this.initCollections()
 
+            this.el_set_default = $('#set_default')
+            this.el_default_search = $('#default_search')
+
+            if(localStorage.default_search)
+            {
+                this.el_set_default.prop('checked', true)
+                this.el_default_search.prop('disabled', false)
+                    .val(localStorage.default_search)
+            }
+
             $(document).on('click', '.add-site', _.bind(this.addSite, this))
+            $(document).on('click', '#set_default', _.bind(this.toggleUseDefault, this))
+            $(document).on('click', '#default_search', _.bind(this.changeDefaultSites, this))
+        },
+
+        toggleUseDefault: function(e)
+        {
+            var me = $(e.currentTarget)
+
+            this.el_default_search.prop('disabled', !me.is(':checked'))
+
+            if(me.is(':checked'))
+            {
+                this.setDefaultSite(this.el_default_search.val())
+            }else{
+                this.setDefaultSite(false)
+            }
+        },
+
+        changeDefaultSites: function(e)
+        {
+            var me = $(e.currentTarget)
+
+            if(me.is(':enabled'))
+                this.setDefaultSite(me.val())
+        },
+
+        setDefaultSite: function(site)
+        {
+            if(site)
+                localStorage.default_search = site
+            else
+                localStorage.removeItem('default_search')
         },
 
         addSite: function(e)
         {
             e.preventDefault()
 
-            // console.log(safari.application.activeBrowserWindow.activeTab.url)
             var model = this.Collections.Sites.create({ key: 'key', url: safari.application.activeBrowserWindow.activeTab.url })
-            // var model = this.Collections.Sites.create()
             model.trigger('justAdded')
 
             model.save()
@@ -38,7 +82,7 @@
 
             this.Collections.Sites.on('add', this.addOne, this)
             this.Collections.Sites.on('reset', this.addAll, this)
-            this.Collections.Sites.on('all', this.render, this)
+            // this.Collections.Sites.on('all', this.render, this)
 
             this.Collections.Sites.fetch()
         },
@@ -47,6 +91,8 @@
         {
             var view = new SiteView({ model: site })
             this.$sites.append(view.render().el)
+
+            $('#default_search').append( this.option_template( site.toJSON() ) )
         },
 
         addAll: function()
@@ -61,6 +107,7 @@
                 })
             }else{
                 this.Collections.Sites.each(_.bind(this.addOne, this))
+                // $('#default_search').val(localStorage.default_search)
             }
         },
 

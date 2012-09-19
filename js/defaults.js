@@ -48,5 +48,9 @@ Omnikey.default_sites = [
     {
         key: 'wolfram',
         url: 'http://www.wolframalpha.com/input/?i={search}'
+    },
+    {
+        key: 'mp3',
+        url: 'http://www.amazon.com/s/?tag=widgetsamazon-20&link_code=wsw&_encoding=UTF-8&search-alias=digital-music&field-keywords={search}&Submit.x=0&Submit.y=0&Submit=Go'
     }
 ]

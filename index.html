@@ -46,8 +46,8 @@
                 <div class="span12">
                     <h2>Download</h2>
                     <p>
-                        <a class="btn btn-primary btn-large" href="download/omnikey.safariextz">Download Omnikey</a>
-                        <a class="btn btn-large" href="http://github.com/marioestrada/safari-omnikey">Source Code</a>
+                        <a id="download_btn" class="btn btn-primary btn-large" href="download/omnikey.safariextz">Download Omnikey</a>
+                        <a id="source_btn" class="btn btn-large" href="http://github.com/marioestrada/safari-omnikey">Source Code</a>
                     </p>
 
                     <p><a href="https://github.com/marioestrada/safari-omnikey#version-history">Version History</a> <small>* Since version 0.10 Omnikey requires Safari 6+</small></p>
@@ -138,6 +138,16 @@
         ga.setAttribute('async', 'true');
         document.documentElement.firstChild.appendChild(ga);
         })();
+
+        $('#download_btn').click(function()
+        {
+            _gaq.push(['_trackEvent', 'Download', 'click', 'Safari Extension'])
+        })
+
+        $('#source_btn').click(function()
+        {
+            _gaq.push(['_trackEvent', 'Source', 'click', 'GitHub'])
+        })
         </script>
 
         <script type="text/javascript">

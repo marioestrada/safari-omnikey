@@ -9,6 +9,7 @@ Searching for `amazon ipod touch` from the url bar will search for `ipod touch` 
 ## Bundled Site Keywords
 
 - Amazon: `amazon`
+- Amazon MP3: `mp3`
 - Wikipedia: `wiki`
 - Ebay: `ebay`
 - Google Maps: `maps`

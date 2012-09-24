@@ -9,6 +9,7 @@ Searching for `amazon ipod touch` from the url bar will search for `ipod touch` 
 ## Bundled Site Keywords
 
 - Amazon: `amazon`
+- Amazon MP3: `mp3`
 - Wikipedia: `wiki`
 - Ebay: `ebay`
 - Google Maps: `maps`
@@ -30,7 +31,7 @@ You can force a regular search without keyword matching by prepending the query 
 - __done__ ~~Site manager (Settings)~~
 - __done__ ~~Bang search forcing regular search~~
 - __done__ ~~Look for a faster way to detect searches and prevent Google flashing before some searches~~
-- Being able to set a default search site for all searches.
+- __done__ ~~Being able to set a default search site for all searches~~
 
 # Version History
 

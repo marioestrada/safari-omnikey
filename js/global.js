@@ -52,7 +52,7 @@ var handleQuery = function(e)
     }else if(key[0] === '!'){
         e.preventDefault()
 
-        e.target.url = 'https://www.google.com/search?q=' + escape(full_query.slice(1))
+        e.target.url = 'https://www.google.com/search?q=' + encodeURIComponent(full_query.slice(1))
     }else if(search_site){
         e.preventDefault()
 

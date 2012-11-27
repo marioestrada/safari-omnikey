@@ -35,6 +35,10 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.0.3
+
+- [Bugfix] Added support for international characters.
+
 ### 1.0.1
 
 - [Bugfix] Using `{%search}` now encodes every space

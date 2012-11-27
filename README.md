@@ -42,7 +42,7 @@ You can force a regular search without keyword matching by prepending the query 
 
 ### 1.0.3
 
-- [Bugfix] Fix for international characters on searches.
+- [Bugfix] Added support for international characters.
 
 ### 1.0.1
 

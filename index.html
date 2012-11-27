@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Safari Omnikey - Keyword searches from URL field</title>
+
+        <meta name="description" content="Chrome-like keyword search for Safari. Search Amazon, Wikipedia or any other site directly from your URL field." />
+        <meta name="title" content="Safari Omnikey - Keyword searches from URL bar" />
+
+        <link rel="stylesheet" href="site/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="site/bootstrap/css/bootstrap-responsive.css" />
+        <link rel="stylesheet" href="site/css/site.css" />
+    </head>
+    <body data-spy="scroll" data-target=".navbar" data-offset="100">
+
+        <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Safari Omnikey</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <!-- <li class="active"><a href="#">Home</a></li> -->
+                            <li><a href="#download">Download</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#instructions">Instructions</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <!-- Main hero unit for a primary marketing message or call to action -->
+            <div class="hero-unit">
+                <h1>Safari Omnikey</h1>
+                <p>Chrome-like keyword search for Safari browser. Search Amazon, Wikipedia or any other site directly from your URL bar.</p>
+                <p><a href="#features" class="btn btn-primary">Learn more &raquo;</a></p>
+            </div>
+
+            <div class="row" id="download">
+                <div class="span12">
+                    <h2>Download</h2>
+                    <p>
+                        <a id="download_btn" class="btn btn-primary btn-large" href="download/omnikey.safariextz">Download Omnikey</a>
+                        <a id="source_btn" class="btn btn-large" href="http://github.com/marioestrada/safari-omnikey">Source Code</a>
+                    </p>
+
+                    <p><a href="https://github.com/marioestrada/safari-omnikey#version-history">Version History</a> <small>* Since version 0.10 Omnikey requires Safari 6+</small></p>
+
+                    <div id="social_github" class="social">
+                        <div class="button">
+                            <iframe src="http://ghbtns.com/github-btn.html?user=marioestrada&repo=safari-omnikey&type=watch&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+                        </div>
+                        <div class="button">
+                            <iframe src="http://ghbtns.com/github-btn.html?user=marioestrada&repo=safari-omnikey&type=fork&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
+                        </div>
+                    </div>
+
+                    <p>Know how to make Omnikey better? Report issues or send pull requests on <a href="http://github.com/marioestrada/safari-omnikey">Github</a>.</p>
+                    <p><small>* Some of the bundled sites will come with referral attributes in the URL to support further development.</small></p>
+
+                    <div id="social" class="social">
+                        <div class="button">
+                            <div class="fb-like" data-send="false" data-layout="button_count" data-width="140" data-show-faces="false" data-font="arial"></div>
+                        </div>
+                        <div class="button">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-via="marioeg" data-related="marioeg">Tweet</a>
+                        </div>
+                        <div class="button">
+                            <div class="g-plusone" data-size="medium"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="features">
+                <div class="span12">
+                    <h2>Features</h2>
+                    <ul>
+                        <li>Works directly with Safari, no extra software required.</li>
+                        <li>Search any site directly from the URL field, for example type <code>amazon headphones</code> on the URL to search Amazon directly for headphones.</li>
+                        <li>Replace Safari's default search providers with custom ones, DuckDuckGo is a great alternative for example.</li>
+                        <li>Bundled with common search sites: Amazon, Wikipedia, Youtube, Twitter and more.</li>
+                        <li>Add any site from the Extension popup on the toolbar.</li>
+                        <li>Force regular searches by prepending <code>!</code> to the search query.</li>
+                    </ul>
+                    <!-- <p><a class="btn " href="#">View details &raquo;</a></p> -->
+
+                    <h4>Quotes</h4>
+                    <blockquote>
+                        <p>
+                            "Omnikey is a very handy Safari extension. It is lightweight, fast, and easy to use. Setting up new search keys is easy and works flawlessly."
+                        </p>
+                        <small><a href="http://lukashermann.de">Lukas Hermann</a>, <a href="http://www.macstories.net/mac/omnikey-simplifies-website-specific-search-in-safari/">MacStories.net</a></small>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="row" id="instructions">
+                <div class="span12">
+                    <h2>Instructions</h2>
+                    <p>Omnikey comes bundled with some major sites, to see the complete list click in the Omnikey icon in the toolbar.</p>
+                    
+                    <p>Every site has a key/url pair, if you set <code>am</code> as the key for the Amazon search searching for <code>am ipod touch</code> will search for "ipod touch" on Amazon's website.</p>
+
+                    <p>Add sites by clicking in the <b>Add Site</b> button on the extension's popup window. Omnikey will populate the URL field with the current window url, replace the query part of the URL with <code>{search}</code> which will act as a wildcard that will be replaced when performing searches.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <footer>
+                <p>MIT Licensed, <a href="http://github.com/marioestrada/safari-omnikey">Fork it on Github</a> - Created by <a href="http://mario.ec">Mario Estrada</a></p>
+            </footer>
+
+        </div>
+
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="site/bootstrap/js/bootstrap.min.js"></script>
+        <script src="site/js/site.js"></script>
+
+        <!-- !Google Tracking -->
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-1804175-7']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+        var ga = document.createElement('script');
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
+            'http://www') + '.google-analytics.com/ga.js';
+        ga.setAttribute('async', 'true');
+        document.documentElement.firstChild.appendChild(ga);
+        })();
+
+        $('#download_btn').click(function()
+        {
+            _gaq.push(['_trackEvent', 'Download', 'click', 'Safari Extension'])
+        })
+
+        $('#source_btn').click(function()
+        {
+            _gaq.push(['_trackEvent', 'Source', 'click', 'GitHub'])
+        })
+        </script>
+
+        <script type="text/javascript">
+          var _gauges = _gauges || [];
+          (function() {
+            var t   = document.createElement('script');
+            t.type  = 'text/javascript';
+            t.async = true;
+            t.id    = 'gauges-tracker';
+            t.setAttribute('data-site-id', '4f5e36eff5a1f54e73000025');
+            t.src = '//secure.gaug.es/track.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(t, s);
+          })();
+        </script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=116662515097415";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+        <script type="text/javascript">
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+    </body>
+</html>

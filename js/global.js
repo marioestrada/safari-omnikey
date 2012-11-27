@@ -4,8 +4,8 @@ var createUrl = function(url, query)
 {
     var new_url
 
-    query = query.replace(/\s+/g, '+')
-    query = escape(query)
+    query = encodeURIComponent(query)
+    query = query.replace(/%20/g, '+')
 
     new_url = url.replace(/\{search\}/g, query)
     new_url = new_url.replace(/\{%search\}/g, query.replace(/\+/g, '%20'))
@@ -21,7 +21,6 @@ var handleQuery = function(e)
     var sites = Omnikey.default_sites
 
     var search_site = localStorage.default_search
-    // search_site = 'http://duckduckgo.com/?q={search}'
 
     if(SitesList.length > 0)
     {
@@ -46,7 +45,7 @@ var handleQuery = function(e)
     if(sites[key])
     {
         e.preventDefault()
-        
+
         search_url = createUrl(sites[key], query)
 
         e.target.url = search_url

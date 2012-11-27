@@ -35,6 +35,15 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.0.4
+
+- [Bugfix] Fix for international characters on site keywords.
+- [Bugfix] Smaller download file.
+
+### 1.0.3
+
+- [Bugfix] Fix for international characters on searches.
+
 ### 1.0.1
 
 - [Bugfix] Using `{%search}` now encodes every space

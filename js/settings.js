@@ -38,8 +38,10 @@
             if(me.is(':checked'))
             {
                 this.setDefaultSite(this.el_default_search.val())
+                safari.extension.globalPage.contentWindow.trackEvent(['Default Search', this.el_default_search.val()])
             }else{
                 this.setDefaultSite(false)
+                safari.extension.globalPage.contentWindow.trackEvent(['Default Search', false])
             }
         },
 
@@ -100,6 +102,7 @@
             if(this.Collections.Sites.length === 0)
             {
                 console.log('First time running, populating sites')
+                safari.extension.globalPage.contentWindow.trackEvent('Install')
                 this.Collections.Sites.add(Omnikey.default_sites)
                 this.Collections.Sites.each(function(Site)
                 {
@@ -228,6 +231,9 @@
 
             var obj = {}
             obj[me.attr('data-key')] = me.val()
+
+            safari.extension.globalPage.contentWindow.trackEvent(['Added Site', me.attr('data-key') + '|' + me.val()])
+
             this.model.save(obj)
         },
 

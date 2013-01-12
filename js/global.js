@@ -1,5 +1,12 @@
 // global.js
 
+var _gaq = _gaq || []
+
+var trackEvent = function(data)
+{
+    _gaq.push(['_trackEvent', 'Actions'].concat(data))
+}
+
 var createUrl = function(url, query)
 {
     var new_url

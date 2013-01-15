@@ -55,13 +55,19 @@ var handleQuery = function(e)
 
         search_url = createUrl(sites[key], query)
 
+        safari.extension.globalPage.contentWindow.trackEvent(['Search:key', key + '|' + search_url.match('\/\/[^\/]+\/')])
+
         e.target.url = search_url
     }else if(key[0] === '!'){
         e.preventDefault()
 
+        safari.extension.globalPage.contentWindow.trackEvent(['Search:force', key])
+
         e.target.url = 'https://www.google.com/search?q=' + encodeURIComponent(full_query.slice(1))
     }else if(search_site){
         e.preventDefault()
+
+        safari.extension.globalPage.contentWindow.trackEvent(['Search:default', search_site])
 
         e.target.url = createUrl(search_site, full_query)
     }

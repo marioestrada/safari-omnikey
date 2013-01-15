@@ -149,6 +149,7 @@
 
         clear: function()
         {
+            safari.extension.globalPage.contentWindow.trackEvent(['Removed Site', this.get('key') + '|' + this.get('url')])
             this.destroy()
         },
 

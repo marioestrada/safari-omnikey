@@ -35,6 +35,10 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.0.6 & 1.0.5
+
+- [Analytics] Tracking some usage, nothing identifiable just generic events.
+
 ### 1.0.4
 
 - [Bugfix] Fix for international characters on site keywords.

@@ -64,7 +64,7 @@
                     </div>
 
                     <p>Know how to make Omnikey better? Report issues or send pull requests on <a href="http://github.com/marioestrada/safari-omnikey">Github</a>.</p>
-                    <p><small>* Some of the bundled sites will come with referral attributes in the URL to support further development.</small></p>
+                    <p><small>* Some of the bundled sites will come with referral attributes in the URL to support further development. It may also add referral information on links from Google search results.</small></p>
 
                     <div id="social" class="social">
                         <div class="button">
@@ -107,7 +107,7 @@
                 <div class="span12">
                     <h2>Instructions</h2>
                     <p>Omnikey comes bundled with some major sites, to see the complete list click in the Omnikey icon in the toolbar.</p>
-                    
+
                     <p>Every site has a key/url pair, if you set <code>am</code> as the key for the Amazon search searching for <code>am ipod touch</code> will search for "ipod touch" on Amazon's website.</p>
 
                     <p>Add sites by clicking in the <b>Add Site</b> button on the extension's popup window. Omnikey will populate the URL field with the current window url, replace the query part of the URL with <code>{search}</code> which will act as a wildcard that will be replaced when performing searches.</p>
@@ -134,7 +134,7 @@
 
         (function() {
         var ga = document.createElement('script');
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
             'http://www') + '.google-analytics.com/ga.js';
         ga.setAttribute('async', 'true');
         document.documentElement.firstChild.appendChild(ga);

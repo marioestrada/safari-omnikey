@@ -8,6 +8,6 @@ if(window.top === window && document.location.href.match(/^https?:\/\/(www\.)?go
 		var link = supported_links[i]
 		var separator = link.href.indexOf('?') >= 0 ? '&' : '?'
 
-		link.href = link.href + '?tag=httpmariec-20'
+		link.href = link.href + separator + 'tag=httpmariec-20'
 	}
 }

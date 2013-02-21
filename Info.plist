@@ -15,7 +15,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.6</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.6</string>
+	<string>1.0.6.1</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -54,7 +54,17 @@
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
-		<dict/>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>js/end.js</string>
+			</array>
+		</dict>
+		<key>Whitelist</key>
+		<array>
+			<string>https://*.google.com/*</string>
+			<string>http://*.google.com/*</string>
+		</array>
 	</dict>
 	<key>Description</key>
 	<string>Keyword searches for Safari's Omnibar-like search.</string>

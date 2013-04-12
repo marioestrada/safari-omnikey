@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Mario Estrada</string>
 	<key>Builder Version</key>
-	<string>8536.26.17</string>
+	<string>8536.28.10</string>
 	<key>CFBundleDisplayName</key>
 	<string>Omnikey</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.7</string>
+	<string>1.0.8</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.7</string>
+	<string>1.0.8</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -60,11 +60,6 @@
 				<string>js/end.js</string>
 			</array>
 		</dict>
-		<key>Whitelist</key>
-		<array>
-			<string>https://*.google.com/*</string>
-			<string>http://*.google.com/*</string>
-		</array>
 	</dict>
 	<key>Description</key>
 	<string>Keyword searches for Safari's Omnibar-like search.</string>

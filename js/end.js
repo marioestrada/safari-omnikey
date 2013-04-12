@@ -1,5 +1,5 @@
-// Only look inside Google.com
-if(window.top === window && document.location.href.match(/^https?:\/\/(www\.)?google.com/i))
+// Only look inside the search engines
+if(window.top === window && document.location.href.match(/^https?:\/\/((search|www).)?(google|yahoo|bing)(.[a-zA-Z][a-zA-Z0-9]{1,2}){1,2}?/i))
 {
 	supported_links = document.querySelectorAll('[href^="http://www.amazon.com"]')
 

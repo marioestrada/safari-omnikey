@@ -39,7 +39,7 @@ Omnikey.default_sites = [
     },
     {
         key: 'twitter',
-        url: 'http://search.twitter.com/search?q={search}'
+        url: 'https://twitter.com/search?q={search}'
     },
     {
         key: 'wiki',

@@ -35,7 +35,7 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
-### 1.0.9 & 1.0.7
+### 1.0.9
 
 - [Bugfix] Some internal RegEx fixes.
 

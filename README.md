@@ -35,6 +35,23 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.0.8 & 1.0.7
+
+- [Bugfix] Update default Twitter search url that comes bundled with the app and added affiliate tag to search results.
+
+### 1.0.6 & 1.0.5
+
+- [Analytics] Tracking some usage, nothing identifiable just generic events.
+
+### 1.0.4
+
+- [Bugfix] Fix for international characters on site keywords.
+- [Bugfix] Smaller download file.
+
+### 1.0.3
+
+- [Bugfix] Added support for international characters.
+
 ### 1.0.1
 
 - [Bugfix] Using `{%search}` now encodes every space

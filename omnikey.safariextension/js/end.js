@@ -1,9 +1,11 @@
+// jshint asi: true
 if(window.top === window) {
 
     var href = document.location.href
+    var search_engines_re = /^https?:\/\/((search|www)\.)?(google|yahoo|bing)(\.[a-zA-Z][a-zA-Z0-9]{1,2}){1,2}/i
 
     // Only look inside the search engines
-    if(href.match(/^https?:\/\/((search|www)\.)?(google|yahoo|bing)(\.[a-zA-Z][a-zA-Z0-9]{1,2}){1,2}/i)) {
+    if(href.match(search_engines_re)) {
         var supported_links = document.querySelectorAll('[href^="http://www.amazon.com"]')
         var link, separator;
 
@@ -16,6 +18,7 @@ if(window.top === window) {
         }
     }
 
+    // Add referal to Amazon Search
     if(href.match(/^https?:\/\/(www\.)?amazon(\.[a-zA-Z][a-zA-Z0-9]{1,2}){1,2}/i)) {
         var form = document.querySelector('[role=search]')
         var input = document.createElement('input')

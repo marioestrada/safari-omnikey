@@ -12,23 +12,27 @@ body{
     box-sizing: border-box;
 }
 
-.add-site{
+.toolbar{
     position: absolute;
     right: 10px;
     top: 8px;
-    background: #B8B8B8;
+}
+
+.toolbar .btn {
+    float: right;
+    margin-left: 4px;
+}
+
+.btn {
     background: #777;
     background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.8), rgba(255,255,255,0));
     border: 1px solid #6B6B6B;
     box-shadow: 0 1px 2px rgba(255,255,255,0.5);
     padding: 4px 6px;
-    color: #6B6B6B;
     color: #fff;
     text-decoration: none;
     font-size: 12px;
-    text-shadow: 0 1px 0 #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.75);
-    /*font-weight: bold;*/
     border-radius: 3px;
 }
 
@@ -103,7 +107,7 @@ tbody tr:nth-child(even){
     background-color: #F3F6FA;
 }
 
-#sites{
+#sites-table{
     border-top: 0;
     border-bottom: 0;
 }
@@ -124,6 +128,23 @@ table td.key{
 table th.url,
 table td.url{
     width: 70%;
+}
+
+#import-export {
+    position: relative;
+}
+#import-export textarea {
+    resize: none;
+    height: 150px;
+    font-family: monospace;
+    font-size: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+#import-export .import-data {
+    position: absolute;
+    bottom: 6px;
+    right: 4px;
 }
 
 p.footer{

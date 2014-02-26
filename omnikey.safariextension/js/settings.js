@@ -4,13 +4,14 @@
 
     var AppView = Backbone.View.extend({
 
-        option_template: _.template('\
-                <option value="<%= url %>"><%= name %></option>\
-        '),
+        option_template: _.template('<option value="<%= url %>"><%= name %></option>'),
 
         initialize: function()
         {
             this.$sites = this.$('tbody').html('')
+            this.$panels = $('.panel')
+            this.$import_data = $('#import_data')
+            this.$export_data = $('#export_data')
 
             this.initViews()
             this.initCollections()
@@ -26,8 +27,18 @@
             }
 
             $(document).on('click', '.add-site', _.bind(this.addSite, this))
+            $(document).on('click', '.import-export-toggle', _.bind(this.togglePanels, this))
+            $(document).on('click', '.import-data', _.bind(this.importData, this))
             $(document).on('click', '#set_default', _.bind(this.toggleUseDefault, this))
             $(document).on('click', '#default_search', _.bind(this.changeDefaultSites, this))
+        },
+
+        importData: function (e) {
+            e.preventDefault()
+
+            this.Collections.Sites.importData(this.$import_data.val())
+
+            this.togglePanels()
         },
 
         toggleUseDefault: function(e)
@@ -46,6 +57,11 @@
             }
         },
 
+        togglePanels: function (e) {
+            if (e) { e.preventDefault() }
+            this.$panels.toggle()
+        },
+
         changeDefaultSites: function(e)
         {
             var me = $(e.currentTarget)
@@ -57,10 +73,11 @@
 
         setDefaultSite: function(site)
         {
-            if(site)
+            if(site) {
                 localStorage.default_search = site
-            else
+            } else {
                 localStorage.removeItem('default_search')
+            }
         },
 
         addSite: function(e)
@@ -86,9 +103,14 @@
 
             this.Collections.Sites.on('add', this.addOne, this)
             this.Collections.Sites.on('reset', this.addAll, this)
+            this.Collections.Sites.on('all', this.fillExportData, this)
             // this.Collections.Sites.on('all', this.render, this)
 
             this.Collections.Sites.fetch()
+        },
+
+        fillExportData: function () {
+            this.$export_data.val(this.Collections.Sites.exportData())
         },
 
         addOne: function(site)
@@ -112,13 +134,7 @@
                 })
             }else{
                 this.Collections.Sites.each(_.bind(this.addOne, this))
-                // $('#default_search').val(localStorage.default_search)
             }
-        },
-
-        render: function()
-        {
-
         }
     })
 
@@ -186,14 +202,26 @@
         comparator: function(site)
         {
             return site.get('key').toLowerCase().charCodeAt(0)
+        },
+
+        exportData: function () {
+            var data = _(this.toJSON()).map(function (obj) {
+                return _(obj).pick('key', 'url')
+            })
+
+            return JSON.stringify(data)
+        },
+
+        importData: function (json_data) {
+            var sites = JSON.parse(json_data)
+            this.add(sites)
         }
     })
 
     var SiteView = Backbone.View.extend({
         tagName: 'tr',
 
-        template: _.template('\
-            <td class="key">\
+        template: _.template('<td class="key">\
                 <input class="key" data-key="key" value="<%= key %>" />\
                 <span class="label"><%= key %></span>\
             </td>\
@@ -285,7 +313,7 @@
     $(function()
     {
         window.App = new AppView({
-            el: $('#sites')
+            el: $('#sites-table')
         })
     })
 })()

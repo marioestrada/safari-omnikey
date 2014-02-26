@@ -12,27 +12,37 @@
         <script src="js/settings.js"></script>
     </head>
     <body>
-        <a href="#add-site" class="add-site">Add Site</a>
+        <section class="toolbar">
+            <a href="#add-site" class="add-site btn">Add Site</a>
+            <a href="#import-export-toggle" class="import-export-toggle btn">Import/Export</a>
+        </section>
         <h1>Sites</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th class="key">Key</th>
-                    <th class="url">Url</th>
-                </tr>
-            </thead>
-        </table>
-        <div id="sites-scroller">
-            <table id="sites">
-                <tbody>
+        <div id="sites" class="panel">
+            <table>
+                <thead>
                     <tr>
-                        <td>No sites</td>
-                        <td></td>
+                        <th class="key">Key</th>
+                        <th class="url">Url</th>
                     </tr>
-                </tbody>
+                </thead>
             </table>
+            <div id="sites-scroller">
+                <table id="sites-table">
+                    <tbody>
+                        <tr>
+                            <td>No sites</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="footer center">Use <code>{search}</code> as the wildcard to be replaced in the url.</p>
+            <p class="footer"><input type="checkbox" name="set_default" id="set_default" /> Use <select name="default_search" disabled="disabled" id="default_search"></select> as the default search for Safari.</p>
         </div>
-        <p class="footer center">Use <code>{search}</code> as the wildcard to be replaced in the url.</p>
-        <p class="footer"><input type="checkbox" name="set_default" id="set_default" /> Use <select name="default_search" disabled="disabled" id="default_search"></select> as the default search for Safari.</p>
+        <div id="import-export" class="panel" style="display: none">
+            <textarea id="export_data" readonly></textarea>
+            <textarea id="import_data" placeholder="Paste the data to import here"></textarea>
+            <a href="#import-data" class="import-data btn">Import</a>
+        </div>
     </body>
 </html>

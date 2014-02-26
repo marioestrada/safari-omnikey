@@ -1,3 +1,4 @@
+// jshint asi: true
 var Omnikey = Omnikey || {}
 
 Omnikey.default_sites = [

@@ -1,3 +1,4 @@
+/* jshint asi: true */
 (function()
 {
 
@@ -49,8 +50,9 @@
         {
             var me = $(e.currentTarget)
 
-            if(me.is(':enabled'))
+            if(me.is(':enabled')) {
                 this.setDefaultSite(me.val())
+            }
         },
 
         setDefaultSite: function(site)
@@ -131,11 +133,13 @@
         {
             this.on('change:url', this.setName, this)
 
-            if(!this.get('url'))
+            if(!this.get('url')) {
                 this.set({ url: this.defaults.url })
+            }
 
-            if(!this.get('key'))
+            if(!this.get('key')) {
                 this.set({ key: this.defaults.key })
+            }
 
             this.set('name', this.getName(this.get('url')))
 
@@ -240,8 +244,9 @@
 
         keypress: function(e)
         {
-            if(e.keyCode === 13)
+            if(e.keyCode === 13) {
                 this.done(e)
+            }
         },
 
         keydown: function(e)

@@ -1,4 +1,4 @@
-// global.js
+// jshint asi: true
 
 var _gaq = _gaq || []
 

@@ -35,6 +35,10 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.2
+- [Feature] Updated UI.
+- [Bugfix] Update default search URLs.
+
 ### 1.1.0
 - [Feature] Added import/export capabilities to sites.
 

@@ -32,7 +32,7 @@ Omnikey.default_sites = [
     },
     {
         key: 'rt',
-        url: 'http://www.rottentomatoes.com/search/search.php?search={search}&sitesearch=rt'
+        url: 'http://www.rottentomatoes.com/search/?search={search}'
     },
     {
         key: 'imdb',

@@ -73,4 +73,12 @@ var handleQuery = function(e)
     }
 }
 
+safari.application.addEventListener('message', function( e ) {
+    if (e.name === 'getSettings') {
+        e.target.page.dispatchMessage('setSettings', {
+            referral_enabled: safari.extension.settings.getItem('referral_enabled')
+        });
+    }
+}, false);
+
 safari.application.addEventListener("beforeSearch", handleQuery, false)

@@ -213,7 +213,7 @@
         },
 
         importData: function (json_data) {
-            this.add(json_data)
+            this.add(JSON.parse(json_data))
             this.each(function(Site)
             {
                 Site.save()

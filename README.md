@@ -28,6 +28,9 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.3.2
+- [Bugfix] Small fixes.
+
 ### 1.3.1
 - [Bugfix] Fixes import/export feature.
 

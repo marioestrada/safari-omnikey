@@ -1,8 +1,4 @@
 // jshint asi: true
-(function()
-{
-    if(window.top === window)
-    {
-
-    }
+(function() {
+    if(window.top === window) {}
 })()

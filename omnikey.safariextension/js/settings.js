@@ -19,8 +19,7 @@
             this.el_set_default = $('#set_default')
             this.el_default_search = $('#default_search')
 
-            if(localStorage.default_search)
-            {
+            if (localStorage.default_search) {
                 this.el_set_default.prop('checked', true)
                 this.el_default_search.prop('disabled', false)
                     .val(localStorage.default_search)
@@ -40,6 +39,7 @@
             this.Collections.Sites.importData(json_data);
 
             this.togglePanels()
+            this.$import_data.val('')
         },
 
         toggleUseDefault: function(e) {
@@ -93,14 +93,13 @@
         initCollections: function() {
             this.Collections = {}
 
-            this.Collections.Sites = new Sites
+            this.Collections.Sites = new Sites()
 
             this.Collections.Sites.on('add', this.addOne, this)
             this.Collections.Sites.on('reset', this.addAll, this)
             this.Collections.Sites.on('all', this.fillExportData, this)
-            // this.Collections.Sites.on('all', this.render, this)
 
-            this.Collections.Sites.fetch()
+            this.Collections.Sites.fetch({ reset: true })
         },
 
         fillExportData: function () {
@@ -111,7 +110,7 @@
             var view = new SiteView({ model: site })
             this.$sites.append(view.render().el)
 
-            $('#default_search').append( this.option_template( site.toJSON() ) )
+            $('#default_search').append(this.option_template(site.toJSON()))
         },
 
         addAll: function() {

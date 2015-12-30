@@ -1,17 +1,7 @@
 // jshint asi: true
-if (window.top === window) {
-  safari.self.tab.dispatchMessage('getSettings');
-
-  safari.self.addEventListener('message', function(e) {
-    if(e.name === 'setSettings') {
-      settings = e.message;
-      initialize(settings);
-    }
-  }, false);
-}
+/* globals safari */
 
 var initialize = function (settings) {
-  console.log(settings)
   if(settings.referral_enabled) {
       var href = document.location.href
       var search_engines_re = /^https?:\/\/((search|www)\.)?(google|yahoo|bing)(\.[a-zA-Z][a-zA-Z0-9]{1,2}){1,2}/i
@@ -41,4 +31,15 @@ var initialize = function (settings) {
           form.appendChild(input)
       }
   }
+}
+
+if (window.top === window) {
+  safari.self.tab.dispatchMessage('getSettings');
+
+  safari.self.addEventListener('message', function(e) {
+    if(e.name === 'setSettings') {
+      var settings = e.message;
+      initialize(settings);
+    }
+  }, false);
 }

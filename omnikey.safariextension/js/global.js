@@ -1,14 +1,13 @@
-// jshint asi: true
+/* jshint asi: true */
+/* globals Backbone, safari, Omnikey */
 
 var _gaq = _gaq || []
 
-var trackEvent = function(data)
-{
+var trackEvent = function(data) {
     _gaq.push(['_trackEvent', 'Actions'].concat(data))
 }
 
-var createUrl = function(url, query)
-{
+var createUrl = function(url, query) {
     var new_url
 
     query = encodeURIComponent(query)
@@ -20,8 +19,7 @@ var createUrl = function(url, query)
     return new_url
 }
 
-var handleQuery = function(e)
-{
+var handleQuery = function(e) {
     var SavedSites = new Backbone.LocalStorage('omnikey-sites')
     var SitesList = SavedSites.findAll()
 
@@ -29,15 +27,12 @@ var handleQuery = function(e)
 
     var search_site = localStorage.default_search
 
-    if(SitesList.length > 0)
-    {
+    if (SitesList.length > 0) {
         sites = {}
-        for(var i = 0; i < SitesList.length; i++)
-        {
+        for(var i = 0; i < SitesList.length; i++) {
             sites[SitesList[i].key] = SitesList[i].url
 
-            if(SitesList[i].default)
-            {
+            if(SitesList[i].default) {
                 search_site = SitesList[i].url
             }
         }
@@ -49,8 +44,7 @@ var handleQuery = function(e)
     var query = parts.splice(1).join(' ')
     var search_url
 
-    if(sites[key])
-    {
+    if (sites[key]) {
         e.preventDefault()
 
         search_url = createUrl(sites[key], query)
@@ -58,13 +52,13 @@ var handleQuery = function(e)
         safari.extension.globalPage.contentWindow.trackEvent(['Search:key', key + '|' + search_url.match('\/\/[^\/]+\/')])
 
         e.target.url = search_url
-    }else if(key[0] === '!'){
+    } else if (key[0] === '!'){
         e.preventDefault()
 
         safari.extension.globalPage.contentWindow.trackEvent(['Search:force', key])
 
         e.target.url = 'https://www.google.com/search?q=' + encodeURIComponent(full_query.slice(1))
-    }else if(search_site){
+    } else if (search_site){
         e.preventDefault()
 
         safari.extension.globalPage.contentWindow.trackEvent(['Search:default', search_site])

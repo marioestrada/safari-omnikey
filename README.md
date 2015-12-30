@@ -26,17 +26,10 @@ Searching for `amazon ipod touch` from the url bar will search for `ipod touch` 
 
 You can force a regular search without keyword matching by prepending the query with a `!`, eg: `!amazon headquarters`.
 
-# To-do
-
-- __done__ ~~Site manager (Settings)~~
-- __done__ ~~Bang search forcing regular search~~
-- __done__ ~~Look for a faster way to detect searches and prevent Google flashing before some searches~~
-- __done__ ~~Being able to set a default search site for all searches~~
-
 # Version History
 
 ### 1.3.1
-- - [Bugfix] Fixes import/export feature.
+- [Bugfix] Fixes import/export feature.
 
 ### 1.3
 - [Feature] Added option for toggling Amazon referrals.

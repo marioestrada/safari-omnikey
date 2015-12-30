@@ -35,6 +35,12 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.3.1
+- - [Bugfix] Fixes import/export feature.
+
+### 1.3
+- [Feature] Added option for toggling Amazon referrals.
+
 ### 1.2
 - [Feature] Updated UI.
 - [Bugfix] Update default search URLs.

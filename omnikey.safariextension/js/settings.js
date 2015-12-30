@@ -119,8 +119,7 @@
                 console.log('First time running, populating sites')
                 safari.extension.globalPage.contentWindow.trackEvent('Install')
                 this.Collections.Sites.add(Omnikey.default_sites)
-                this.Collections.Sites.each(function(Site)
-                {
+                this.Collections.Sites.each(function(Site) {
                     Site.save()
                 })
             } else {

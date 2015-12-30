@@ -195,7 +195,8 @@
         },
 
         importData: function (json_data) {
-            this.add(json_data)
+            var object = JSON.parse(json_data);
+            this.add(object)
             this.each(function(Site)
             {
                 Site.save()

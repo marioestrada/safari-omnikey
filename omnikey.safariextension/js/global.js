@@ -4,7 +4,9 @@
 var _gaq = _gaq || []
 
 var trackEvent = function(data) {
-    _gaq.push(['_trackEvent', 'Actions'].concat(data))
+    if (safari.extension.settings.getItem('ga_enabled')) {
+        _gaq.push(['_trackEvent', 'Actions'].concat(data))
+    }
 }
 
 var createUrl = function(url, query) {
@@ -52,7 +54,7 @@ var handleQuery = function(e) {
         safari.extension.globalPage.contentWindow.trackEvent(['Search:key', key + '|' + search_url.match('\/\/[^\/]+\/')])
 
         e.target.url = search_url
-    } else if (key[0] === '!'){
+    } else if (safari.extension.settings.getItem('bang_search_enabled') && key[0] === '!'){
         e.preventDefault()
 
         safari.extension.globalPage.contentWindow.trackEvent(['Search:force', key])

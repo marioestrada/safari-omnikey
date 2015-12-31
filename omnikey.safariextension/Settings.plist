@@ -6,6 +6,26 @@
 		<key>DefaultValue</key>
 		<true/>
 		<key>Key</key>
+		<string>bang_search_enabled</string>
+		<key>Title</key>
+		<string>Use exclamation sign at the start (!) to skip using keyword searches.</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>ga_enabled</string>
+		<key>Title</key>
+		<string>Send anonymous usage tracking information.</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
 		<string>referral_enabled</string>
 		<key>Title</key>
 		<string>Support development by letting Omnikey add referral information to certain links (e.g. Amazon).</string>

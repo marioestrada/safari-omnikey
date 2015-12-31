@@ -28,6 +28,10 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.4.0
+- [Feature] Adds option for disabling `!` search.
+- [Feature] Adds option for disabling analytics reporting.
+
 ### 1.3.2
 - [Bugfix] Small fixes.
 

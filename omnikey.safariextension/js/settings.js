@@ -168,6 +168,9 @@
         getName: function(url) {
             var link = this.parseUrl(url)
 
+            if (link.hostname.length <= 0) {
+              return link.href;
+            }
             return this.capitalize(link.hostname.replace('www.', ''))
         },
 

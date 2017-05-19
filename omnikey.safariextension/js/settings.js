@@ -1,297 +1,383 @@
-/* jshint asi: true */
-/* globals Backbone, safari, _, Omnikey */
-(function()
-{
+/* globals Redux, Backbone, safari, _, Omnikey */
+(function() {
+  var INITIAL_STATE = [];
+  var DEFAULT_SITE = {
+    key: 'key',
+    url: 'http://example.com/?q={search}',
+  };
 
-    var AppView = Backbone.View.extend({
+  var $byId = function (id) {
+    return document.getElementById(id);
+  };
+  var arrClone = function(array) {
+    return array.slice(0);
+  };
+  var getName = function(site) {
+    var link = document.createElement('a');
+    link.href = site.url;
 
-        option_template: _.template('<option value="<%= url %>"><%= name %></option>'),
+    if (link.hostname.length <= 0) {
+      return link.href;
+    }
 
-        initialize: function() {
-            this.$sites = this.$('tbody').html('')
-            this.$panels = $('.panel')
-            this.$import_data = $('#import_data')
-            this.$export_data = $('#export_data')
+    var domain = link.hostname.replace('www.', '');
+    return domain[0].toUpperCase() + domain.slice(1);
+  };
 
-            this.initViews()
-            this.initCollections()
+  var $doc = $(document);
 
-            this.el_set_default = $('#set_default')
-            this.el_default_search = $('#default_search')
+  var sites = function(state, action) {
+    if (state == null) {
+      return {
+        sites: [],
+        active: null,
+      };
+    }
+    var newSites;
 
-            if (localStorage.default_search) {
-                this.el_set_default.prop('checked', true)
-                this.el_default_search.prop('disabled', false)
-                    .val(localStorage.default_search)
-            }
-
-            $(document).on('click', '.add-site', _.bind(this.addSite, this))
-            $(document).on('click', '.import-export-toggle', _.bind(this.togglePanels, this))
-            $(document).on('click', '.import-data', _.bind(this.importData, this))
-            $(document).on('click', '#set_default', _.bind(this.toggleUseDefault, this))
-            $(document).on('click', '#default_search', _.bind(this.changeDefaultSites, this))
-        },
-
-        importData: function (e) {
-            e.preventDefault()
-
-            var json_data = this.$import_data.val();
-            this.Collections.Sites.importData(json_data);
-
-            this.togglePanels()
-            this.$import_data.val('')
-        },
-
-        toggleUseDefault: function(e) {
-            var me = $(e.currentTarget)
-
-            this.el_default_search.prop('disabled', !me.is(':checked'))
-
-            if (me.is(':checked')) {
-                this.setDefaultSite(this.el_default_search.val())
-                safari.extension.globalPage.contentWindow.trackEvent(['Default Search', this.el_default_search.val()])
-            } else {
-                this.setDefaultSite(false)
-                safari.extension.globalPage.contentWindow.trackEvent(['Default Search', false])
-            }
-        },
-
-        togglePanels: function (e) {
-            if (e) { e.preventDefault() }
-            this.$panels.toggle()
-        },
-
-        changeDefaultSites: function(e) {
-            var me = $(e.currentTarget)
-
-            if (me.is(':enabled')) {
-                this.setDefaultSite(me.val())
-            }
-        },
-
-        setDefaultSite: function(site) {
-            if (site) {
-                localStorage.default_search = site
-            } else {
-                localStorage.removeItem('default_search')
-            }
-        },
-
-        addSite: function(e) {
-            e.preventDefault()
-
-            var model = this.Collections.Sites.create({ key: 'key', url: safari.application.activeBrowserWindow.activeTab.url })
-            model.trigger('justAdded')
-
-            model.save()
-        },
-
-        initViews: function() {
-            this.Subviews = {}
-        },
-
-        initCollections: function() {
-            this.Collections = {}
-
-            this.Collections.Sites = new Sites()
-
-            this.Collections.Sites.on('add', this.addOne, this)
-            this.Collections.Sites.on('reset', this.addAll, this)
-            this.Collections.Sites.on('all', this.fillExportData, this)
-
-            this.Collections.Sites.fetch({ reset: true })
-        },
-
-        fillExportData: function () {
-            this.$export_data.val(this.Collections.Sites.exportData())
-        },
-
-        addOne: function(site) {
-            var view = new SiteView({ model: site })
-            this.$sites.append(view.render().el)
-
-            $('#default_search').append(this.option_template(site.toJSON()))
-        },
-
-        addAll: function() {
-            if (this.Collections.Sites.length === 0) {
-                console.log('First time running, populating sites')
-                safari.extension.globalPage.contentWindow.trackEvent('Install')
-                this.Collections.Sites.add(Omnikey.default_sites)
-                this.Collections.Sites.each(function(Site) {
-                    Site.save()
-                })
-            } else {
-                this.Collections.Sites.each(_.bind(this.addOne, this))
-            }
+    console.log('REDUX', action.type, action, state);
+    switch (action.type) {
+      case 'ADD':
+        newSites = arrClone(state.sites);
+        newSites.push(action.site);
+        return {
+          sites: newSites,
+          active: newSites.length - 1
+        };
+      case 'REMOVE':
+        newSites = arrClone(state.sites);
+        newSites.splice(action.index, 1);
+        safari.extension.globalPage.contentWindow.trackEvent([
+          'Removed Site',
+          state.sites[action.index].key + '|' + state.sites[action.index].url
+        ]);
+        return {
+          sites: newSites,
+          active: null
+        };
+      case 'MODIFY':
+        newSites = arrClone(state.sites);
+        newSites.splice(action.index, 1, action.site);
+        return {
+          sites: newSites,
+          active: null,
+        };
+      case 'MAKE_DEFAULT':
+        newSites = arrClone(state.sites);
+        newSites.splice(action.index, 1, Object.assign({}, newSites[action.index], {
+          default: true
+        }));
+        return {
+          sites: newSites,
+          active: null,
+        };
+      case 'IMPORT':
+        return {
+          sites: action.sites,
+          active: null
         }
-    })
+      default:
+        return state;
+    }
+  };
 
-    var Site = Backbone.Model.extend({
+  var AppView = Backbone.View.extend({
+    option_template: _.template(
+      '<option value="<%= url %>"><%= name %></option>'
+    ),
 
-        defaults: {
-            key: 'example',
-            url: 'http://example.com/?q={search}'
-        },
+    initialize: function() {
+      this.$sites = this.$('tbody').html('');
+      this.$panels = $('.panel');
+      this.$import_data = $('#import_data');
+      this.$export_data = $('#export_data');
 
-        initialize: function() {
-            this.on('change:url', this.setName, this)
+      this.initStore();
 
-            if (!this.get('url')) {
-                this.set({ url: this.defaults.url })
-            }
+      this.el_set_default = $('#set_default');
+      this.el_default_search = $('#default_search');
 
-            if (!this.get('key')) {
-                this.set({ key: this.defaults.key })
-            }
+      if (localStorage.default_search) {
+        this.el_set_default.prop('checked', true);
+        this.el_default_search
+          .prop('disabled', false)
+          .val(localStorage.default_search);
+      }
 
-            this.set('name', this.getName(this.get('url')))
+      $doc.on('click', '.add-site', this.addSite.bind(this));
+      $doc.on('click', '.import-export-toggle', this.togglePanels.bind(this));
+      $doc.on('click', '.export-copy', this.exportCopy.bind(this));
+      $doc.on('click', '.import-data', this.importData.bind(this));
+      $doc.on('click', '#set_default', this.toggleUseDefault.bind(this));
+      $doc.on('click', '#default_search', this.changeDefaultSites.bind(this));
+    },
 
-            this.view = new SiteView({ model: this })
-        },
+    exportCopy: function (e) {
+      e.preventDefault();
 
-        setName: function() {
-            this.set('name', this.getName(this.get('url')))
-        },
+      $byId('export_data').select();
+      document.execCommand('copy');
+    },
 
-        clear: function() {
-            safari.extension.globalPage.contentWindow.trackEvent(['Removed Site', this.get('key') + '|' + this.get('url')])
-            this.destroy()
-        },
+    importData: function(e) {
+      e.preventDefault();
 
-        parseUrl: function(url) {
-            var a = document.createElement('a')
-            a.href = url
-            return a
-        },
-
-        getName: function(url) {
-            var link = this.parseUrl(url)
-
-            if (link.hostname.length <= 0) {
-              return link.href;
-            }
-            return this.capitalize(link.hostname.replace('www.', ''))
-        },
-
-        capitalize: function(string) {
-            return string[0].toUpperCase() + string.slice(1)
-        }
-    })
-
-    var Sites = Backbone.Collection.extend({
-        model: Site,
-
-        localStorage: new Backbone.LocalStorage("omnikey-sites"),
-
-        comparator: function(site) {
-            return site.get('key').toLowerCase().charCodeAt(0)
-        },
-
-        exportData: function () {
-            var data = _(this.toJSON()).map(function (obj) {
-                return _(obj).pick('key', 'url')
-            })
-
-            return JSON.stringify(data)
-        },
-
-        importData: function (json_data) {
-            var object = JSON.parse(json_data);
-            this.add(object)
-            this.each(function(Site)
-            {
-                Site.save()
-            })
-        }
-    })
-
-    var SiteView = Backbone.View.extend({
-        tagName: 'tr',
-
-        template: _.template('<td class="key">\
-                <input class="key" data-key="key" value="<%= key %>" />\
-                <span class="label"><%= key %></span>\
-            </td>\
-            <td class="url">\
-                <a href="#delete" class="remove">+</a>\
-                <input class="url" data-key="url" value="<%= url %>" />\
-                <span class="label"><%= name %></span>\
-            </td>'),
-
-        events: {
-            'click td': 'edit',
-            'blur td input': 'done',
-            'keypress td input': 'keypress',
-            'click .remove': 'removeSite',
-            'keydown td input': 'keydown'
-        },
-
-        initialize: function() {
-            this.model.on('change', this.render, this)
-            this.model.on('destroy', this.remove, this)
-            this.model.on('justAdded', this.justAdded, this)
-        },
-
-        justAdded: function() {
-            this.$('td:first').trigger('click')
-        },
-
-        removeSite: function(e) {
-            e.preventDefault()
-            this.clear()
-        },
-
-        done: function(e) {
-            var me = $(e.currentTarget)
-            me.closest('td').removeClass('editing')
-
-            var obj = {}
-            obj[me.attr('data-key')] = me.val()
-
-            safari.extension.globalPage.contentWindow.trackEvent(['Added Site', me.attr('data-key') + '|' + me.val()])
-
-            this.model.save(obj)
-        },
-
-        keypress: function(e) {
-            if(e.keyCode === 13) {
-                this.done(e)
-            }
-        },
-
-        keydown: function(e) {
-            var me = $(e.currentTarget)
-
-            if(e.keyCode === 9)
-            {
-                _.defer(function()
-                {
-                    me.closest('td').next('td').trigger('click')
-                })
-            }
-        },
-
-        edit: function(e) {
-            var me = $(e.currentTarget)
-            me.addClass('editing')
-            me.find('input')[0].focus()
-        },
-
-        render: function() {
-            this.$el.html(this.template(this.model.toJSON()))
-
-            return this
-        },
-
-        clear: function() {
-            this.model.clear()
-        }
-    })
-
-    $(function() {
-        window.App = new AppView({
-            el: $('#sites-table')
+      var json_data = this.$import_data.val();
+      try {
+        var importedSites = JSON.parse(json_data);
+        this.store.dispatch({
+          type: 'IMPORT',
+          sites: importedSites
         })
-    })
-})()
+      } catch (e) {}
+
+      this.togglePanels();
+      this.$import_data.val('');
+    },
+
+    toggleUseDefault: function(e) {
+      var me = $(e.currentTarget);
+
+      this.el_default_search.prop('disabled', !me.is(':checked'));
+
+      if (me.is(':checked')) {
+        this.setDefaultSite(this.el_default_search.val());
+        safari.extension.globalPage.contentWindow.trackEvent([
+          'Default Search',
+          this.el_default_search.val()
+        ]);
+      } else {
+        this.setDefaultSite(false);
+        safari.extension.globalPage.contentWindow.trackEvent([
+          'Default Search',
+          false
+        ]);
+      }
+    },
+
+    togglePanels: function(e) {
+      if (e) {
+        e.preventDefault();
+      }
+      this.$panels.toggle();
+    },
+
+    changeDefaultSites: function(e) {
+      var me = $(e.currentTarget);
+
+      if (me.is(':enabled')) {
+        this.setDefaultSite(me.val());
+      }
+    },
+
+    setDefaultSite: function(site) {
+      if (site) {
+        localStorage.default_search = site;
+      } else {
+        localStorage.removeItem('default_search');
+      }
+    },
+
+    addSite: function(e) {
+      e.preventDefault();
+
+      this.store.dispatch({
+        type: 'ADD',
+        site: {
+          key: DEFAULT_SITE.key,
+          url: safari.application.activeBrowserWindow.activeTab.url ||
+            DEFAULT_SITE.url
+        },
+      });
+    },
+
+    initStore: function() {
+      var data = this.load();
+      if (data == null) {
+        console.log('Trying to load data from Backbone\'s localStorage');
+        data = (new Backbone.LocalStorage('omnikey-sites')).findAll();
+
+        if (data && data.length > 0) {
+          safari.extension.globalPage.contentWindow.trackEvent([
+            'Imported Count:',
+            data.length
+          ]);
+        }
+      }
+      if (data && data.length === 0) {
+        console.log('First time running, populating sites');
+        safari.extension.globalPage.contentWindow.trackEvent('Install');
+        data = Omnikey.default_sites;
+      }
+      var loadedSites = data.map(function(site) {
+        return {
+          key: site.key,
+          url: site.url,
+          default: site.default
+        };
+      });
+      this.store = Redux.createStore(sites, {
+        sites: loadedSites,
+        active: null
+      })
+      this.store.subscribe(this.render.bind(this));
+      this.store.subscribe(this.save.bind(this));
+      this.store.subscribe(this.fillExportData.bind(this));
+      this.save();
+      this.render();
+      this.fillExportData();
+    },
+
+    load: function() {
+      try {
+        var rawData = localStorage.getItem(Omnikey.STORAGE_KEY);
+        if (rawData != null) {
+          return JSON.parse(rawData);
+        }
+        return undefined;
+      } catch (e) {
+        return undefined;
+      }
+    },
+
+    save: function() {
+      try {
+        var serializedState = JSON.stringify(this.store.getState().sites);
+        localStorage.setItem(Omnikey.STORAGE_KEY, serializedState);
+      } catch (e) {}
+    },
+
+    fillExportData: function() {
+      this.$export_data.val(
+        JSON.stringify(this.store.getState().sites)
+      );
+    },
+
+    render: function() {
+      $('#default_search').empty();
+      this.$sites.empty();
+      var state = this.store.getState();
+      state.sites.forEach(this.renderSite.bind(this));
+
+      if (state.active) {
+        $('#sites-scroller')
+          .scrollTop($('#sites-scroller').prop('scrollHeight'))
+      }
+    },
+
+    renderSite: function(site, i) {
+      var view = new SiteView({
+        model: {
+          store: this.store,
+          site: site,
+          index: i
+        }
+      });
+      this.$sites.append(view.render().el);
+
+      $('#default_search').append(
+        this.option_template(Object.assign({name: getName(site)}, site))
+      );
+    }
+  });
+
+  var SiteView = Backbone.View.extend({
+    tagName: 'tr',
+
+    template: _.template(
+      '<td class="key">\
+          <input class="key" data-key="key" value="<%= key %>" />\
+          <span class="label"><%= key %></span>\
+      </td>\
+      <td class="url">\
+          <a href="#delete" class="remove">+</a>\
+          <input class="url" data-key="url" value="<%= url %>" />\
+          <span class="label"><%= name %></span>\
+      </td>'
+    ),
+
+    events: {
+      'click td': 'edit',
+      'blur td input': 'done',
+      'keypress td input': 'keypress',
+      'click .remove': 'removeSite'
+    },
+
+    initialize: function() {
+      this.store = this.model.store;
+    },
+
+    justAdded: function() {
+      this.$('td:first').trigger('click');
+    },
+
+    removeSite: function(e) {
+      e.preventDefault();
+      this.clear();
+    },
+
+    done: function(e) {
+      var me = $(e.currentTarget);
+      me.closest('td').removeClass('editing');
+
+      safari.extension.globalPage.contentWindow.trackEvent([
+        'Added Site',
+        me.attr('data-key') + '|' + me.val()
+      ]);
+
+      var newSite = Object.assign({}, this.model.site);
+      newSite[me.attr('data-key')] = me.val();
+
+      this.store.dispatch({
+        type: 'MODIFY',
+        site: newSite,
+        index: this.model.index
+      });
+    },
+
+    keypress: function(e) {
+      if (e.keyCode === 13) {
+        this.done(e);
+      }
+    },
+
+    edit: function(e) {
+      var me = $(e.currentTarget);
+      me.addClass('editing');
+      me.find('input')[0].focus();
+    },
+
+    startEditing: function () {
+      this.$('td:first').addClass('editing');
+      this.$('input:first')[0].focus();
+    },
+
+    render: function() {
+      this.$el.html(
+        this.template(
+          Object.assign({
+            name: getName(this.model.site)
+          },
+          this.model.site)
+        )
+      );
+      if (this.model.index === this.store.getState().active) {
+        this.startEditing();
+      }
+      return this;
+    },
+
+    clear: function() {
+      this.store.dispatch({
+        type: 'REMOVE',
+        index: this.model.index
+      });
+    }
+  });
+
+  $(function() {
+    window.App = new AppView({
+      el: $('#sites-table')
+    });
+  });
+})();

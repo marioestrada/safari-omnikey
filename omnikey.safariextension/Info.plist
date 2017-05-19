@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.1</string>
+	<string>1.5.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.4.1</string>
+	<string>1.5.0</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Database Quota</key>
@@ -28,11 +28,11 @@
 				<key>Filename</key>
 				<string>settings.html</string>
 				<key>Height</key>
-				<real>360</real>
+				<integer>400</integer>
 				<key>Identifier</key>
 				<string>Sites</string>
 				<key>Width</key>
-				<real>300</real>
+				<integer>320</integer>
 			</dict>
 		</array>
 		<key>Toolbar Items</key>

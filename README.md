@@ -28,6 +28,12 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### 1.5.0
+- [Feature] Copy to clipboard directly from import/export
+- [Enhancement] Now backed by Redux instead of Backbone
+- [Enhancement] Updated all 3rd party dependencies
+- [Enhancement] Small UI tweaks
+
 ### 1.4.1
 - [Bugfix] `javascript://` urls where causing exceptions.
 

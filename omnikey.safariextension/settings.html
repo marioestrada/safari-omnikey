@@ -7,6 +7,7 @@
     <script src="js/vendor/underscore.js"></script>
     <script src="js/vendor/backbone.js"></script>
     <script src="js/vendor/backbone.localstorage.js"></script>
+    <script src="js/vendor/redux.js"></script>
 
     <script src="js/defaults.js"></script>
     <script src="js/settings.js"></script>
@@ -36,13 +37,18 @@
           </tbody>
         </table>
       </div>
-      <p class="footer center">Use <code>{search}</code> as the wildcard to be replaced in the url.</p>
+      <p class="footer center">Use <code title="Use {%search} to encode spaces as %20">{search}</code> as the wildcard to be replaced in the url.</p>
       <p class="footer"><input type="checkbox" name="set_default" id="set_default" /> Use <select name="default_search" disabled="disabled" id="default_search"></select> as the default search for Safari.</p>
     </div>
     <div id="import-export" class="panel" style="display: none">
-      <textarea id="export_data" readonly></textarea>
-      <textarea id="import_data" placeholder="Paste the data to import here"></textarea>
-      <a href="#import-data" class="import-data btn">Import</a>
+      <div id="export" class="textarea-section">
+        <textarea id="export_data" readonly></textarea>
+        <a href="#export-copy" class="export-copy btn">Copy</a>
+      </div>
+      <div id="import" class="textarea-section">
+        <textarea id="import_data" placeholder="Paste the data to import here"></textarea>
+        <a href="#import-data" class="import-data btn">Import</a>
+      </div>
     </div>
   </body>
 </html>

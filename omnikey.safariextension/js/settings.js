@@ -71,6 +71,11 @@
           sites: newSites,
           active: null,
         };
+      case 'IMPORT':
+        return {
+          sites: action.sites,
+          active: null
+        }
       default:
         return state;
     }
@@ -118,8 +123,13 @@
       e.preventDefault();
 
       var json_data = this.$import_data.val();
-      // TODO: import data support
-      // this.Collections.Sites.importData(json_data);
+      try {
+        var importedSites = JSON.parse(json_data);
+        this.store.dispatch({
+          type: 'IMPORT',
+          sites: importedSites
+        })
+      } catch (e) {}
 
       this.togglePanels();
       this.$import_data.val('');
@@ -184,7 +194,7 @@
     initStore: function() {
       var data = this.load();
       if (data == null) {
-        console.log('Trying to load data from Backbone\' localStorage');
+        console.log('Trying to load data from Backbone\'s localStorage');
         data = (new Backbone.LocalStorage('omnikey-sites')).findAll();
 
         if (data && data.length > 0) {

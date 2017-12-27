@@ -28,6 +28,10 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### Unreleased
+
+- [Feature] Using `{rawsearch}` does not escape query string
+
 ### 1.5.0
 - [Feature] Copy to clipboard directly from import/export
 - [Enhancement] Now backed by Redux instead of Backbone

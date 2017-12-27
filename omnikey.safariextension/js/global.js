@@ -15,11 +15,12 @@ var trackEvent = function(data) {
 var createUrl = function(url, query) {
   var new_url;
 
-  query = encodeURIComponent(query);
-  query = query.replace(/%20/g, '+');
+  var escaped_query = encodeURIComponent(query);
+  escaped_query = query.replace(/%20/g, '+');
 
-  new_url = url.replace(/\{search\}/g, query);
-  new_url = new_url.replace(/\{%search\}/g, query.replace(/\+/g, '%20'));
+  new_url = url.replace(/\{search\}/g, escaped_query);
+  new_url = new_url.replace(/\{%search\}/g, escaped_query.replace(/\+/g, '%20'));
+  new_url = new_url.replace(/\{rawsearch\}/g, query);
 
   return new_url;
 };

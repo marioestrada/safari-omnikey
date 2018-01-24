@@ -4,7 +4,7 @@ Omnikey.STORAGE_KEY = 'sites';
 Omnikey.default_sites = [
   {
     key: "amazon",
-    url: "http://www.amazon.com/s/?tag=httpmariec-20&link_code=wsw&_encoding=UTF-8&search-alias=aps&field-keywords={search}&Submit.x=0&Submit.y=0&Submit=Go"
+    url: "http://www.amazon.com/s/?link_code=wsw&_encoding=UTF-8&search-alias=aps&field-keywords={search}&Submit.x=0&Submit.y=0&Submit=Go"
   },
   {
     key: "youtube",

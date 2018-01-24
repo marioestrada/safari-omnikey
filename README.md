@@ -1,4 +1,4 @@
-# Safari Omnibar-like keyword search
+# Omnibar-like keyword search
 
 This extension provides implements a keyword search from Safari's url bar.
 

@@ -28,6 +28,9 @@ You can force a regular search without keyword matching by prepending the query 
 
 # Version History
 
+### Unreleased
+- [Feature] Using `{rawsearch}` does not escape query string
+
 ### 1.5.1
 - [Other] Removed some unused code
 

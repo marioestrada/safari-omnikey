@@ -20,10 +20,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Omnikey for Safari</a>
+                    <h2 class="brand-container"><a class="brand" href="#">Omnikey</a></h2>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <!-- <li class="active"><a href="#">Home</a></li> -->
                             <li><a href="#download">Download</a></li>
                             <li><a href="#features">Features</a></li>
                             <li><a href="#instructions">Instructions</a></li>
@@ -52,32 +51,15 @@
 
                     <p><a href="https://github.com/marioestrada/safari-omnikey#version-history">Version History</a> <small>* Since version 0.10 Omnikey requires Safari 6+</small></p>
 
-                    <div id="social_github" class="social">
-                        <div class="button">
-                            <iframe src="http://ghbtns.com/github-btn.html?user=marioestrada&repo=safari-omnikey&type=watch&count=true"
-  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-                        </div>
-                        <div class="button">
-                            <iframe src="http://ghbtns.com/github-btn.html?user=marioestrada&repo=safari-omnikey&type=fork&count=true"
-  allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
-                        </div>
-                    </div>
-
                     <p>Know how to make Omnikey better? Report issues or send pull requests on <a href="http://github.com/marioestrada/safari-omnikey">Github</a>.</p>
 
-                    <p><small>* Some of the bundled sites will come with referral attributes in the URL to support further development. It may also add referral information on links from Google search results and Amazon searches.</small></p>
-
-                    <div id="social" class="social">
+                    <div id="social_github" class="social">
                         <div class="button">
-                            <div class="fb-like" data-send="false" data-layout="button_count" data-width="140" data-show-faces="false" data-font="arial"></div>
-                        </div>
-                        <div class="button">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-via="marioeg" data-related="marioeg">Tweet</a>
-                        </div>
-                        <div class="button">
-                            <div class="g-plusone" data-size="medium"></div>
+                          <a class="github-button" href="https://github.com/marioestrada/safari-omnikey" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star marioestrada/safari-omnikey on GitHub">Star</a>
                         </div>
                     </div>
+
+                    <p><small>* Some of the bundled sites may come with referral attributes in the URL to support further development.</small></p>
                 </div>
             </div>
 
@@ -142,34 +124,14 @@
         document.documentElement.firstChild.appendChild(ga);
         })();
 
-        $('#download_btn').click(function()
-        {
+        $('#download_btn').click(function() {
             _gaq.push(['_trackEvent', 'Download', 'click', 'Safari Extension'])
         })
 
-        $('#source_btn').click(function()
-        {
+        $('#source_btn').click(function() {
             _gaq.push(['_trackEvent', 'Source', 'click', 'GitHub'])
         })
         </script>
-
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=116662515097415";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-        <script type="text/javascript">
-          (function() {
-            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-            po.src = 'https://apis.google.com/js/plusone.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-          })();
-        </script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
     </body>
 </html>

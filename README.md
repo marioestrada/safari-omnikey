@@ -1,4 +1,4 @@
-# Safari Omnibar-like keyword search
+# Omnibar-like keyword search
 
 This extension provides implements a keyword search from Safari's url bar.
 
@@ -29,8 +29,10 @@ You can force a regular search without keyword matching by prepending the query 
 # Version History
 
 ### Unreleased
-
 - [Feature] Using `{rawsearch}` does not escape query string
+
+### 1.5.1
+- [Other] Removed some unused code
 
 ### 1.5.0
 - [Feature] Copy to clipboard directly from import/export

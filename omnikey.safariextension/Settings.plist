@@ -22,15 +22,5 @@
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>
-	<dict>
-		<key>DefaultValue</key>
-		<true/>
-		<key>Key</key>
-		<string>referral_enabled</string>
-		<key>Title</key>
-		<string>Support development by letting Omnikey add referral information to certain links (e.g. Amazon).</string>
-		<key>Type</key>
-		<string>CheckBox</string>
-	</dict>
 </array>
 </plist>
